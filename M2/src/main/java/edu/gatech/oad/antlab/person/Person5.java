@@ -5,7 +5,9 @@ package edu.gatech.oad.antlab.person;
  *  returns their name and a
  *  modified string
  *
- *  @author Bob
+ *  modified string
+ *
+ *  @author Yili Hui
  *  @version 1.1
  */
 public class Person5 {
@@ -34,11 +36,14 @@ public class Person5 {
 	  return input.substring(2) + input.substring(0,2);
 	}
 
+
+
 	/**
 	 * Return a string rep of this object
 	 * that varies with an input string
 	 *
 	 * @param input the varying string
+	 * @return the string representing the
 	 * @return the string representing the
 	 *         object
 	 */
