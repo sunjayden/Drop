@@ -31,7 +31,23 @@ public class Person4 {
      */
     private String calc(String input) {
       //Person 4 put your implementation here
-      return null;
+        if (input == null) {
+            return null;
+        }
+
+        char[] chars = new char[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == 'z') {
+                chars[i] = 'a';
+            } else if (input.charAt(i) == 'Z') {
+                    chars[i] = 'A';
+            } if (input.charAt(i) == '9') {
+                chars[i] = '0';
+            } else {
+                chars[i] = (char)(input.charAt(i) + 1);
+            }
+        }
+        return new String(chars);
     }
     
     /**
