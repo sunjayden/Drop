@@ -1,0 +1,18 @@
+//default tasks to run
+defaultTasks 'jar'
+
+//Java plugin will allow your gradle file to execute the Java tasks like clean 
+//(getting rid of .class files), compileJava (compiling your .java files), 
+//and so on
+apply plugin: 'java'
+//apply plugin: 'application'
+
+dependencies {
+	compile  files ('lib/resources.jar')
+}
+
+jar { 
+	manifest {
+		attributes( 'Main-class' : 'edu.gatech.oad.antlab.pkg1.AntLabMain', 'Class-Path': '../../lib/resources.jar')
+	}
+}
