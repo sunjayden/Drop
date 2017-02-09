@@ -1,7 +1,9 @@
-package gatech.cs2340.android.drop;
+package gatech.cs2340.android.drop.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import gatech.cs2340.android.drop.R;
 
 public class MainActivity extends AppCompatActivity {
 
