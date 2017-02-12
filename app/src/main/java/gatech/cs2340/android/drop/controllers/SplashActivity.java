@@ -16,11 +16,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //hide the title bar
         getSupportActionBar().hide();
-        //delay MainActivity
+        //delay WelcomeActivity
         new Handler().postDelayed(new Runnable() {
            @Override
            public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, WelcomeActivity.class);
                 startActivity(intent);
                 finish();
             }

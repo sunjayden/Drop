@@ -2,10 +2,11 @@ package gatech.cs2340.android.drop.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 
 import gatech.cs2340.android.drop.R;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
