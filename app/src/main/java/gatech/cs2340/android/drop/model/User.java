@@ -6,12 +6,12 @@ package gatech.cs2340.android.drop.model;
 
 public abstract class User {
 
+    private static int NextID = 0;
+
     private String _name;
     private String _account;
     private String _password;
     private int _id;
-    private static int NextID = 0;
-
 
     protected User(String name, String account, String password) {
         _name = name;
@@ -21,12 +21,9 @@ public abstract class User {
         _id = NextID;
     }
 
-
-
     public static int getNextID() {
         return NextID;
     }
-
 
     public String getName() {
         return _name;
@@ -59,9 +56,4 @@ public abstract class User {
     public void setId(int id) {
         _id = id;
     }
-
-
-
-
-
 }
