@@ -9,17 +9,45 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controllers.SplashActivity"
+            android:name=".controllers.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.Splash">
+            android:theme="@style/AppTheme.welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controllers.WelcomeActivity"/>
+        <activity
+            android:name=".controllers.SignInActivity"
+            android:label="Sign In"
+            android:parentActivityName=".controllers.SignInActivity">
 
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.SignInActivity" />
+        </activity>
+        <activity
+            android:name=".controllers.SignUpActivity"
+            android:label="Sign Up"
+            android:parentActivityName=".controllers.SignUpActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.SignUpActivity" />
+        </activity>
+        <activity
+            android:name=".controllers.RetrievePasswordActivity"
+            android:label="Forgot Password"
+            android:parentActivityName=".controllers.RetrievePasswordActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.RetrievePasswordActivity" />
+        </activity>
     </application>
 
 </manifest>
