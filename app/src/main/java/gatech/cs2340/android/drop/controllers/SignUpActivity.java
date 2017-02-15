@@ -35,7 +35,6 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText nameField;
     private EditText emailField;
     private EditText passwordField;
-
     private Spinner acctTypeSpinner;
 
     //private User _user;

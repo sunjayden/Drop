@@ -1,7 +1,11 @@
 package gatech.cs2340.android.drop.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static gatech.cs2340.android.drop.R.string.email;
 
 /**
  * Created by BobZhai on 14/02/2017.
@@ -41,6 +45,21 @@ public class Model {
      * @return true if user added, false if not added
      */
     public boolean addUser(User user) {
-        return _userList.add(user);
+        _userList.add(user);
+        Log.d("Num", "number of user" + _userList.size());
+        return true;
+    }
+
+    public boolean isUser(String email, String password) {
+        for (int i = 0; i < _userList.size(); i++) {
+            if(_userList.get(i).getEmail().equals(email) && _userList.get(i).getPassword().equals(password)) {
+                Log.d("Account", "Authenticated");
+                return true;
+            } else {
+                i++;
+            }
+        }
+        Log.d("Account", "Authentication failed");
+        return false;
     }
 }
