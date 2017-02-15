@@ -46,17 +46,16 @@ public class Model {
      */
     public boolean addUser(User user) {
         _userList.add(user);
-        Log.d("Num", "number of user" + _userList.size());
+        Log.d("Num", "number of user " + _userList.size());
         return true;
     }
 
     public boolean isUser(String email, String password) {
         for (int i = 0; i < _userList.size(); i++) {
+            Log.d("Account", _userList.get(i).getEmail() + " " + _userList.get(i).getPassword());
             if(_userList.get(i).getEmail().equals(email) && _userList.get(i).getPassword().equals(password)) {
                 Log.d("Account", "Authenticated");
                 return true;
-            } else {
-                i++;
             }
         }
         Log.d("Account", "Authentication failed");

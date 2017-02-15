@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
@@ -115,8 +116,13 @@ public class SignUpActivity extends AppCompatActivity {
             model.addUser(new User(name, email, password));
         } else {
             model.addUser(new User(name, email, password));
-
         }
+
+        Toast.makeText(getApplicationContext(), "Congratulation, Account Created!",
+                Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        startActivity(intent);
 
         finish();
     }
