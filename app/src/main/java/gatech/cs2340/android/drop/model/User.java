@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by BobZhai on 14/02/2017.
  */
 
-public abstract class User implements Parcelable {
+public class User {
 
     private static int NextID = 0;
 
@@ -27,19 +27,34 @@ public abstract class User implements Parcelable {
     * These methods are required by the parcelable interface
     *
     */
-    private User(Parcel in) {
-        _name = in.readString();
-        _account = in.readString();
-        _password = in.readString();
-        _id = in.readInt();
-    }
-
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(_name);
-        dest.writeString(_account);
-        dest.writeString(_password);
-        dest.writeInt(_id);
-    }
+//    private User(Parcel in) {
+//        _name = in.readString();
+//        _account = in.readString();
+//        _password = in.readString();
+//        _id = in.readInt();
+//    }
+//
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(_name);
+//        dest.writeString(_account);
+//        dest.writeString(_password);
+//        dest.writeInt(_id);
+//    }
+//
+//    public static final Parcelable.Creator<User> CREATOR
+//            = new Parcelable.Creator<User>() {
+//        public User createFromParcel(Parcel in) {
+//            return new User(in);
+//        }
+//
+//        public User[] newArray(int size) {
+//            return new User[size];
+//        }
+//    };
 
 
     public static int getNextID() {
@@ -74,7 +89,5 @@ public abstract class User implements Parcelable {
         return _id;
     }
 
-    public void setId(int id) {
-        _id = id;
-    }
+
 }
