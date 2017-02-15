@@ -28,7 +28,9 @@
         android:textColor="@color/white"
         android:textSize="15sp" />
 
-    <EditText style="@style/EditText" />
+    <EditText
+        android:id="@+id/sign_up_name"
+        style="@style/EditText" />
 
     <TextView
         android:layout_width="match_parent"
@@ -39,7 +41,7 @@
         android:textSize="15sp" />
 
     <EditText
-
+        android:id="@+id/sign_up_email"
         style="@style/EditText" />
 
     <TextView
@@ -50,7 +52,9 @@
         android:textColor="@color/white"
         android:textSize="15sp" />
 
-    <EditText style="@style/EditText" />
+    <EditText
+        android:id="@+id/sign_up_password"
+        style="@style/EditText" />
 
     <TextView
         android:layout_width="match_parent"

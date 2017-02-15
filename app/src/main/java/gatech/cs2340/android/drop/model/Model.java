@@ -24,6 +24,13 @@ public class Model {
 
         //comment this out after full app developed
         loadDummyData();
+    }
 
+    /**
+     * populate the model with some dummy data.  The full app would not require this.
+     * comment out when adding new courses functionality is present.
+     */
+    private void loadDummyData() {
+        _user.add(new Admin("Jayden Sun", "123@gmail.com", "1234567"));
     }
 }
