@@ -1,10 +1,13 @@
 package gatech.cs2340.android.drop.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by BobZhai on 14/02/2017.
  */
 
-public abstract class User {
+public abstract class User implements Parcelable {
 
     private static int NextID = 0;
 
@@ -17,9 +20,27 @@ public abstract class User {
         _name = name;
         _account = account;
         _password = password;
-        NextID++;
-        _id = NextID;
+        _id = User.NextID++;
     }
+
+    /* *********************************
+    * These methods are required by the parcelable interface
+    *
+    */
+    private User(Parcel in) {
+        _name = in.readString();
+        _account = in.readString();
+        _password = in.readString();
+        _id = in.readInt();
+    }
+
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_name);
+        dest.writeString(_account);
+        dest.writeString(_password);
+        dest.writeInt(_id);
+    }
+
 
     public static int getNextID() {
         return NextID;
