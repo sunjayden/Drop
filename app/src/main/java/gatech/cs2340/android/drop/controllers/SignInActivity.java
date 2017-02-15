@@ -61,41 +61,35 @@ public class SignInActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public  void onClick(View view) {
-                Log.d("Button", "Sign In Button");
-                onSignInPressed(view);
+                /**
+                 * Button handler for the add new student button
+                 */
+                Log.d("Button", "Sign In Pressed");
+                Model model = Model.getInstance();
+
+                String email = emailField.getText().toString();
+                String password = passwordField.getText().toString();
+
+                if (model.isUser(email, password)) {
+                    Intent mainIntent = new Intent(SignInActivity.this, MainActivity.class);
+                    startActivity(mainIntent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Invalid email or password, please try again!",
+                            Toast.LENGTH_LONG).show();
+                }
+
+        //        if (accountType.equals(AccountType.ADMIN)) {
+        //            model.addUser(new Admin(name, email, password));
+        //        } else if (accountType.equals(AccountType.MANAGER)) {
+        //            model.addUser(new Manager(name, email, password));
+        //        } else if (accountType.equals(AccountType.WORKER)) {
+        //            model.addUser(new User(name, email, password));
+        //        } else {
+        //            model.addUser(new User(name, email, password));
+        //        }
+
+                finish();
             }
         });
-    }
-
-    /**
-     * Button handler for the add new student button
-     * @param view the button
-     */
-    protected void onSignInPressed(View view) {
-        Log.d("Button", "Sign In Pressed");
-        Model model = Model.getInstance();
-
-        String email = emailField.getText().toString();
-        String password = passwordField.getText().toString();
-
-        if (model.isUser(email, password)) {
-            Intent mainIntent = new Intent(SignInActivity.this, MainActivity.class);
-            startActivity(mainIntent);
-        } else {
-            Toast.makeText(getApplicationContext(), "Invalid email or password, please try again!",
-                    Toast.LENGTH_SHORT).show();
-        }
-
-//        if (accountType.equals(AccountType.ADMIN)) {
-//            model.addUser(new Admin(name, email, password));
-//        } else if (accountType.equals(AccountType.MANAGER)) {
-//            model.addUser(new Manager(name, email, password));
-//        } else if (accountType.equals(AccountType.WORKER)) {
-//            model.addUser(new User(name, email, password));
-//        } else {
-//            model.addUser(new User(name, email, password));
-//        }
-
-        finish();
     }
 }
