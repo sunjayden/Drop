@@ -14,13 +14,13 @@ public class Model {
     public static Model getInstance() { return _instance; }
 
     /** holds the list of all user */
-    private List<User> _user;
+    private List<User> _userList;
 
     /**
      * make a new model
      */
     public Model() {
-        _user = new ArrayList<>();
+        _userList = new ArrayList<>();
 
         //comment this out after full app developed
         loadDummyData();
@@ -31,7 +31,7 @@ public class Model {
      * comment out when adding new courses functionality is present.
      */
     private void loadDummyData() {
-        _user.add(new Admin("Jayden Sun", "123@gmail.com", "1234567"));
+        _userList.add(new Admin("Jayden Sun", "123@gmail.com", "1234567"));
     }
 
     /**
@@ -41,6 +41,6 @@ public class Model {
      * @return true if user added, false if not added
      */
     public boolean addUser(User user) {
-        return _user.add(user);
+        return _userList.add(user);
     }
 }

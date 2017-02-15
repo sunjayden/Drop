@@ -72,6 +72,7 @@
         android:layout_marginTop="8dp"></Spinner>
 
     <Button
+        android:id="@+id/sign_up_button"
         style="@style/Button"
         android:layout_marginTop="30dp"
         android:background="@drawable/sign_in_rounder_corner"

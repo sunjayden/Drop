@@ -16,13 +16,13 @@ public class User {
     private static int NextID = 0;
 
     private String _name;
-    private String _account;
+    private String _email;
     private String _password;
     private int _id;
 
-    protected User(String name, String account, String password) {
+    public User(String name, String email, String password) {
         _name = name;
-        _account = account;
+        _email = email;
         _password = password;
         _id = User.NextID++;
     }
@@ -73,12 +73,12 @@ public class User {
         this._name = _name;
     }
 
-    public String getAccount() {
-        return _account;
+    public String getEmail() {
+        return _email;
     }
 
-    public void setAccount(String account) {
-        _account = account;
+    public void setEmail(String email) {
+        _email = email;
     }
 
     public String getPassword() {
@@ -94,7 +94,7 @@ public class User {
     }
 
     public String toString(){
-        return _name + " " + _account;
+        return _name + " " + _email;
     }
 
 

@@ -6,7 +6,7 @@ package gatech.cs2340.android.drop.model;
 
 public class Admin extends Manager {
 
-    protected Admin(String name, String account, String password) {
+    public Admin(String name, String account, String password) {
         super(name, account, password);
     }
 }

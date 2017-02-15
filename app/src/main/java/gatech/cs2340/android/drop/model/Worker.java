@@ -6,7 +6,7 @@ package gatech.cs2340.android.drop.model;
 
 public class Worker extends User {
 
-    protected Worker(String name, String account, String password) {
+    public Worker(String name, String account, String password) {
         super(name, account, password);
     }
 }
