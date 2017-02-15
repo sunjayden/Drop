@@ -89,5 +89,9 @@ public class User {
         return _id;
     }
 
+    public String toString(){
+        return _name + " " + _account;
+    }
+
 
 }
