@@ -8,7 +8,12 @@ import java.util.List;
 import static gatech.cs2340.android.drop.R.string.email;
 
 /**
+ * /**
  * Created by BobZhai on 14/02/2017.
+ *
+ * This is our facade to the Model.  We are using a Singleton design pattern to allow
+ * access to the model from each controller.
+ *
  */
 
 public class Model {
@@ -36,6 +41,8 @@ public class Model {
      */
     private void loadDummyData() {
         _userList.add(new Admin("Jayden Sun", "123@gmail.com", "1234567"));
+        _userList.add(new Admin("Bob Zhai", "bob@gmail.com", "123456"));
+        _userList.add(new Manager("Mike Mallow", "mike@gmail.com", "123456"));
     }
 
     /**
@@ -50,6 +57,12 @@ public class Model {
         return true;
     }
 
+    /**
+     * Return true if it's an user in our database
+     * @param email email address
+     * @param password password
+     * @return
+     */
     public boolean isUser(String email, String password) {
         for (int i = 0; i < _userList.size(); i++) {
             if(_userList.get(i).getEmail().equals(email) && _userList.get(i).getPassword().equals(password)) {
