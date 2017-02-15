@@ -3,12 +3,16 @@ package gatech.cs2340.android.drop.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by BobZhai on 14/02/2017.
  */
 
 public class User {
 
+    public static List<AccountType> legalAcctType = Arrays.asList(AccountType.values());
     private static int NextID = 0;
 
     private String _name;
