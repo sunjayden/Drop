@@ -5,7 +5,7 @@ package gatech.cs2340.android.drop.model;
  */
 
 public enum AccountType {
-    USER("User"),
+    BASIC_USER("Basic User"),
     WORKER("Worker"),
     MANAGER("Manager"),
     ADMIN("Admin");

@@ -33,4 +33,14 @@ public class Model {
     private void loadDummyData() {
         _user.add(new Admin("Jayden Sun", "123@gmail.com", "1234567"));
     }
+
+    /**
+     * add a user to the list
+     *
+     * @param user the student to add
+     * @return true if user added, false if not added
+     */
+    public boolean addUser(User user) {
+        return _user.add(user);
+    }
 }
