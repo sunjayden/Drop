@@ -78,16 +78,6 @@ public class SignInActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 }
 
-        //        if (accountType.equals(AccountType.ADMIN)) {
-        //            model.addUser(new Admin(name, email, password));
-        //        } else if (accountType.equals(AccountType.MANAGER)) {
-        //            model.addUser(new Manager(name, email, password));
-        //        } else if (accountType.equals(AccountType.WORKER)) {
-        //            model.addUser(new User(name, email, password));
-        //        } else {
-        //            model.addUser(new User(name, email, password));
-        //        }
-
                 finish();
             }
         });

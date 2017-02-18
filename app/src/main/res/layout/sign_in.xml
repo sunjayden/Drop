@@ -30,7 +30,8 @@
 
     <EditText
         android:id="@+id/sign_in_email"
-        style="@style/EditText" />
+        style="@style/EditText"
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="match_parent"
@@ -42,7 +43,9 @@
 
     <EditText
         android:id="@+id/sign_in_password"
-        style="@style/EditText" />
+        style="@style/EditText"
+        android:inputType="textPassword"
+        />
 
     <Button
         android:id="@+id/sign_in_button"
