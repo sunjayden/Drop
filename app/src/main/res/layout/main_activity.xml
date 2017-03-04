@@ -26,4 +26,11 @@
         android:background="@drawable/sign_in_rounder_corner"
         android:text="Sign Out"
         android:textAllCaps="true"/>
+
+    <Button
+        android:id="@+id/edit__profile_button"
+        style="@style/Button"
+        android:background="@drawable/sign_in_rounder_corner"
+        android:text="Edit Profile"
+        android:textAllCaps="true"/>
 </LinearLayout>

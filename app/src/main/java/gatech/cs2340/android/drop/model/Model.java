@@ -5,6 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.media.CamcorderProfile.get;
 import static gatech.cs2340.android.drop.R.string.email;
 
 /**
@@ -61,7 +62,7 @@ public class Model {
      * Return true if it's an user in our database
      * @param email email address
      * @param password password
-     * @return
+     * @return if true or false
      */
     public boolean isUser(String email, String password) {
         for (int i = 0; i < _userList.size(); i++) {
@@ -74,4 +75,37 @@ public class Model {
         Log.d("Account", "Authentication failed");
         return false;
     }
+
+    /**
+     * Find name of the given username and password
+     * @param email email address
+     * @param password password
+     * @return the account name
+     */
+    public String getAccount(String email, String password) {
+        String account = "";
+        for (int i = 0; i < _userList.size(); i++) {
+            if(_userList.get(i).getEmail().equals(email) && _userList.get(i).getPassword().equals(password)) {
+                account =  _userList.get(i).getName();
+                return account;
+            }
+        }
+        return account;
+    }
+
+//    public void updateAccount(String oldEmail,String name, String email, String password) {
+//        Log.d("1", oldEmail);
+//        Log.d("1", name);
+//        Log.d("1", email);
+//        Log.d("1", password);
+//        for (int i = 0; i < _userList.size(); i++) {
+//            Log.d("1", _userList.get(i).getEmail());
+//            if(_userList.get(i).getEmail().equals(oldEmail)) {
+//                _userList.get(i).setName(name);
+//                _userList.get(i).setEmail(email);
+//                _userList.get(i).setPassword(password);
+//                break;
+//            }
+//        }
+//    }
 }

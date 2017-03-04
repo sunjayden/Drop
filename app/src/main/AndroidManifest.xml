@@ -58,6 +58,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controllers.MainActivity" />
         </activity>
+        <activity
+            android:name=".controllers.EditProfileActivity"
+            android:label="Edit Profile"
+            android:parentActivityName=".controllers.MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.EditProfileActivity" />
+        </activity>
     </application>
 
 </manifest>

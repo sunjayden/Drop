@@ -72,6 +72,11 @@ public class SignInActivity extends AppCompatActivity {
 
                 if (model.isUser(email, password)) {
                     Intent mainIntent = new Intent(SignInActivity.this, MainActivity.class);
+                    String account = model.getAccount(email, password);
+                    Log.d("info", account);
+                    mainIntent.putExtra("name", account);
+                    mainIntent.putExtra("email", email);
+                    mainIntent.putExtra("password", password);
                     startActivity(mainIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid email or password, please try again!",

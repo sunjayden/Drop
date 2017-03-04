@@ -60,7 +60,6 @@ public class SignUpActivity extends AppCompatActivity {
         nameField = (EditText) findViewById(R.id.sign_up_name);
         emailField = (EditText) findViewById(R.id.sign_up_email);
         passwordField = (EditText) findViewById(R.id.sign_up_password);
-        acctTypeSpinner = (Spinner) findViewById(R.id.account_type_spinner);
 
         /**
          * Set Spinner
@@ -94,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     /**
-     * Button handler for the add new student button
+     * Button handler for the add new user button
      * @param view the button
      */
     protected void onCreatePressed(View view) {

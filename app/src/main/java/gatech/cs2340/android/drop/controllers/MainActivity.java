@@ -18,12 +18,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        Button forgotPassword = (Button) findViewById(R.id.sign_out_button);
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+        Button sign_out = (Button) findViewById(R.id.sign_out_button);
+        sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        final Button edit_profile = (Button) findViewById(R.id.edit__profile_button);
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editIntent = new Intent(MainActivity.this, EditProfileActivity.class);
+                editIntent.putExtra("name", getIntent().getSerializableExtra("name"));
+                editIntent.putExtra("email", getIntent().getSerializableExtra("email"));
+                editIntent.putExtra("password", getIntent().getSerializableExtra("password"));
+                startActivity(editIntent);
             }
         });
     }

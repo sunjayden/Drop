@@ -10,7 +10,7 @@ import java.util.List;
  * Created by BobZhai on 14/02/2017.
  */
 
-public class User {
+public class User implements Parcelable {
 
     public static List<AccountType> legalAcctType = Arrays.asList(AccountType.values());
     private static int NextID = 0;
@@ -31,34 +31,34 @@ public class User {
     * These methods are required by the parcelable interface
     *
     */
-//    private User(Parcel in) {
-//        _name = in.readString();
-//        _account = in.readString();
-//        _password = in.readString();
-//        _id = in.readInt();
-//    }
-//
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeString(_name);
-//        dest.writeString(_account);
-//        dest.writeString(_password);
-//        dest.writeInt(_id);
-//    }
-//
-//    public static final Parcelable.Creator<User> CREATOR
-//            = new Parcelable.Creator<User>() {
-//        public User createFromParcel(Parcel in) {
-//            return new User(in);
-//        }
-//
-//        public User[] newArray(int size) {
-//            return new User[size];
-//        }
-//    };
+    private User(Parcel in) {
+        _name = in.readString();
+        _email = in.readString();
+        _password = in.readString();
+        _id = in.readInt();
+    }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_name);
+        dest.writeString(_email);
+        dest.writeString(_password);
+        dest.writeInt(_id);
+    }
+
+    public static final Parcelable.Creator<User> CREATOR
+            = new Parcelable.Creator<User>() {
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
 
     public static int getNextID() {
