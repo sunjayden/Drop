@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -48,6 +49,26 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+
+        //Retrieve Password link
+        TextView retrievePassword = (TextView) findViewById(R.id.login_forgot_password);
+        retrievePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent passwordIntent = new Intent(LoginActivity.this, RetrievePasswordActivity.class);
+                startActivity(passwordIntent);
+            }
+        });
+
+        //Sign up link
+        TextView signUp = (TextView) findViewById(R.id.login_sign_up);
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signUpIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(signUpIntent);
+            }
+        });
     }
 
     private void login() {

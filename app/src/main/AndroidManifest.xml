@@ -57,6 +57,11 @@
             android:name=".controllers.ReportActivity"
             android:label="Reports"
             android:parentActivityName=".controllers.ReportActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.LoginActivity" />
         </activity>
     </application>
 
