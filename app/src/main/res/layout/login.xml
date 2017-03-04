@@ -44,8 +44,7 @@
     <EditText
         android:id="@+id/login_password_input"
         style="@style/EditText"
-        android:inputType="textPassword"
-        />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/login_button"
@@ -53,7 +52,7 @@
         android:layout_marginTop="45dp"
         android:background="@drawable/rounder_corner_button"
         android:text="@string/sign_in"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true" />
 
 
     <LinearLayout

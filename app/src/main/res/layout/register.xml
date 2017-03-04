@@ -32,7 +32,7 @@
     <EditText
         android:id="@+id/register_name_input"
         style="@style/EditText"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName" />
 
     <TextView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
     <EditText
         android:id="@+id/register_email_input"
         style="@style/EditText"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="match_parent"

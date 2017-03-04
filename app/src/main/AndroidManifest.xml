@@ -41,6 +41,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controllers.WelcomeActivity" />
         </activity>
+        <!-- Retrieve Password Activity -->
+        <activity
+            android:name=".controllers.RetrievePasswordActivity"
+            android:label="Retrieve Password"
+            android:parentActivityName=".controllers.RetrievePasswordActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.RegisterActivity" />
+        </activity>
+        <!-- Report Activity -->
+        <activity
+            android:name=".controllers.ReportActivity"
+            android:label="Reports"
+            android:parentActivityName=".controllers.ReportActivity">
+        </activity>
     </application>
 
 </manifest>

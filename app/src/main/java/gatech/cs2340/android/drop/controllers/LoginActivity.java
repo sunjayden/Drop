@@ -15,13 +15,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import gatech.cs2340.android.drop.R;
 
-import static android.R.id.input;
 import static gatech.cs2340.android.drop.R.layout.login;
-import static gatech.cs2340.android.drop.R.string.email;
 
 /**
  * Created by Jayden Sun on 3/3/17.
@@ -90,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                         // signed in user can be handled in the listener.
                         progressDialog.dismiss();
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(LoginActivity.this, WelcomeActivity.class));
+                            startActivity(new Intent(LoginActivity.this, ReportActivity.class));
                             finish();
                         } else {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());

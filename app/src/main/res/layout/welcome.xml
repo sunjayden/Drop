@@ -26,20 +26,22 @@
         style="@style/Button"
         android:background="@drawable/rounder_corner_button"
         android:text="@string/register"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true" />
+
     <Button
         android:id="@+id/welcome_login_button"
         style="@style/Button"
         android:background="@drawable/rounder_corner_button"
         android:text="@string/sign_in"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true" />
+
     <TextView
-        android:gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="@string/privacy"
+        android:textAllCaps="true"
         android:textColor="@android:color/darker_gray"
-        android:textSize="14sp"
-        android:textAllCaps="true"/>
+        android:textSize="14sp" />
 </LinearLayout>

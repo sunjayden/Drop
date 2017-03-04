@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:bottom="10dp"
+        android:icon="@drawable/newspaper"
+        android:left="10dp"
+        android:right="40dp"
+        android:title="Report"
+        android:top="10dp" />
+
+    <item
+        android:icon="@drawable/placeholder"
+        android:right="10dp"
+        android:title="Map" />
+
+
+    <item
+        android:icon="@drawable/plus"
+        android:right="10dp"
+        android:title="Add" />
+
+    <item
+        android:icon="@drawable/graph"
+        android:right="10dp"
+        android:title="Graph" />
+
+
+    <item
+        android:icon="@drawable/settings"
+        android:right="20dp"
+        android:title="Setting" />
+
+
+</menu>
