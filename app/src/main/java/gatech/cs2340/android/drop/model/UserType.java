@@ -1,10 +1,10 @@
 package gatech.cs2340.android.drop.model;
 
 /**
- * Created by jaydensun on 2/13/17.
+ * Created by Jayden Sun on 2/13/17.
  */
 
-public enum AccountType {
+public enum UserType {
     USER("User"),
     WORKER("Worker"),
     MANAGER("Manager"),
@@ -12,7 +12,7 @@ public enum AccountType {
 
     private final String acctType;
 
-    AccountType(String _type) {
+    UserType(String _type) {
         acctType = _type;
     }
 

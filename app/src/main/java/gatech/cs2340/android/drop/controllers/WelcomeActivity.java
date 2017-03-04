@@ -10,7 +10,7 @@ import android.widget.Button;
 import gatech.cs2340.android.drop.R;
 
 /**
- * Created by jaydensun on 2/13/17.
+ * Created by Jayden Sun on 3/3/17.
  */
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -18,26 +18,29 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome);
+
         //hide action bar
         getSupportActionBar().hide();
 
-        Button register = (Button) findViewById(R.id.home_register);
+        //welcome register button onClick
+        Button register = (Button) findViewById(R.id.welcome_register_button);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Register", "Register Button Clicked");
-                Intent registerIntent = new Intent(WelcomeActivity.this, SignUpActivity.class);
+                Intent registerIntent = new Intent(WelcomeActivity.this, RegisterActivity.class);
                 startActivity(registerIntent);
             }
         });
 
-        Button signIn = (Button) findViewById(R.id.home_sign_in);
-        signIn.setOnClickListener(new View.OnClickListener() {
+        //welcome login button clicked
+        Button login = (Button) findViewById(R.id.welcome_login_button);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Sign In", "Sign In Button Clicked");
-                Intent signInIntent = new Intent(WelcomeActivity.this, SignInActivity.class);
-                startActivity(signInIntent);
+                Log.d("Sign In", "Welcome Sign In Button Clicked");
+                Intent loginInIntent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                startActivity(loginInIntent);
             }
         });
     }

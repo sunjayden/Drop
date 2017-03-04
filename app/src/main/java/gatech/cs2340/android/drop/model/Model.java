@@ -1,111 +1,25 @@
 package gatech.cs2340.android.drop.model;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.media.CamcorderProfile.get;
-import static gatech.cs2340.android.drop.R.string.email;
-
 /**
- * /**
- * Created by BobZhai on 14/02/2017.
- *
- * This is our facade to the Model.  We are using a Singleton design pattern to allow
- * access to the model from each controller.
- *
+ * Created by Jayden Sun on 3/3/17.
  */
 
 public class Model {
+
+    private AccountDAO accountDAO = new AccountDAO();
 
     /** Singleton instance */
     private static final Model _instance = new Model();
     public static Model getInstance() { return _instance; }
 
-    /** holds the list of all user */
-    private List<User> _userList;
-
     /**
      * make a new model
      */
     public Model() {
-        _userList = new ArrayList<>();
 
-        //comment this out after full app developed
-        loadDummyData();
     }
 
-    /**
-     * populate the model with some dummy data.  The full app would not require this.
-     * comment out when adding new courses functionality is present.
-     */
-    private void loadDummyData() {
-        _userList.add(new Admin("Jayden Sun", "123@gmail.com", "1234567"));
-        _userList.add(new Admin("Bob Zhai", "bob@gmail.com", "123456"));
-        _userList.add(new Manager("Mike Mallow", "mike@gmail.com", "123456"));
+    public void createAccount(String name, String email, String password, UserType userType) {
+        accountDAO.addAccount(new Account(name, email, password, userType));
     }
-
-    /**
-     * add a user to the list
-     *
-     * @param user the student to add
-     * @return true if user added, false if not added
-     */
-    public boolean addUser(User user) {
-        _userList.add(user);
-        Log.d("Num", "number of user " + _userList.size());
-        return true;
-    }
-
-    /**
-     * Return true if it's an user in our database
-     * @param email email address
-     * @param password password
-     * @return if true or false
-     */
-    public boolean isUser(String email, String password) {
-        for (int i = 0; i < _userList.size(); i++) {
-            Log.d("Account", _userList.get(i).getEmail() + " " + _userList.get(i).getPassword());
-            if(_userList.get(i).getEmail().equals(email) && _userList.get(i).getPassword().equals(password)) {
-                Log.d("Account", "Authenticated");
-                return true;
-            }
-        }
-        Log.d("Account", "Authentication failed");
-        return false;
-    }
-
-    /**
-     * Find name of the given username and password
-     * @param email email address
-     * @param password password
-     * @return the account name
-     */
-    public String getAccount(String email, String password) {
-        String account = "";
-        for (int i = 0; i < _userList.size(); i++) {
-            if(_userList.get(i).getEmail().equals(email) && _userList.get(i).getPassword().equals(password)) {
-                account =  _userList.get(i).getName();
-                return account;
-            }
-        }
-        return account;
-    }
-
-//    public void updateAccount(String oldEmail,String name, String email, String password) {
-//        Log.d("1", oldEmail);
-//        Log.d("1", name);
-//        Log.d("1", email);
-//        Log.d("1", password);
-//        for (int i = 0; i < _userList.size(); i++) {
-//            Log.d("1", _userList.get(i).getEmail());
-//            if(_userList.get(i).getEmail().equals(oldEmail)) {
-//                _userList.get(i).setName(name);
-//                _userList.get(i).setEmail(email);
-//                _userList.get(i).setPassword(password);
-//                break;
-//            }
-//        }
-//    }
 }
