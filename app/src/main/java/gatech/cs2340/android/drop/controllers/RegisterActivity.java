@@ -27,8 +27,6 @@ import gatech.cs2340.android.drop.R;
 import gatech.cs2340.android.drop.model.Model;
 import gatech.cs2340.android.drop.model.UserType;
 
-import static gatech.cs2340.android.drop.R.string.email;
-
 /**
  * Created by Jayden Sun on 3/3/17.
  */
