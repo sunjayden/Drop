@@ -13,4 +13,6 @@
     <string name="register">Register</string>
     <string name="privacy">Privacy policy &amp; Terms of use</string>
     <string name="acct_type">Account Type</string>
+    <string name="auth_failed">Incorrect email or password</string>
+    <string name="acct_successful">Congratulation, account created! Please sign in</string>
 </resources>

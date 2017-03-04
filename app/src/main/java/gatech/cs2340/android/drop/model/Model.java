@@ -19,7 +19,15 @@ public class Model {
 
     }
 
-    public void createAccount(String name, String email, String password, UserType userType) {
-        accountDAO.addAccount(new Account(name, email, password, userType));
+    public void registerAccount(String name, String email, String password, UserType userType) {
+        accountDAO.registerAccount(new Account(name, email, password, userType));
+    }
+
+    public boolean login(String email, String password) {
+        boolean isValid = false;
+
+
+
+        return isValid;
     }
 }

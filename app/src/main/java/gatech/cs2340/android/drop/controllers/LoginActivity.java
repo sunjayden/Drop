@@ -3,12 +3,19 @@ package gatech.cs2340.android.drop.controllers;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import gatech.cs2340.android.drop.R;
 
@@ -25,6 +32,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText _emailField;
     private EditText _passwordField;
 
+    private static final String TAG = "LoginActivity";
+
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +49,16 @@ public class LoginActivity extends AppCompatActivity {
                 login();
             }
         });
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
     private void login() {
-        Log.d("LoginActivity", "Login Button Clicked");
+        Log.d(TAG, "Login Button Clicked");
+
+        //Grab email and password input from login screen
+        _emailField = (EditText) findViewById(R.id.login_email_input);
+        _passwordField = (EditText) findViewById(R.id.login_password_input);
 
         if (!validate()) {
             onLoginFailed();
@@ -54,16 +71,34 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
         //Grab email and password input from login screen
-        _emailField = (EditText) findViewById(R.id.login_email_input);
-        _passwordField = (EditText) findViewById(R.id.login_password_input);
+//        _emailField = (EditText) findViewById(R.id.login_email_input);
+//        _passwordField = (EditText) findViewById(R.id.login_password_input);
 
 
-        String email = _emailField.getText().toString();
-        String password = _passwordField.getText().toString();
+        String email = _emailField.getText().toString().trim();
+        String password = _passwordField.getText().toString().trim();
 
+        //FireBase code
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-        Intent registerIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
-        startActivity(registerIntent);
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        progressDialog.dismiss();
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(LoginActivity.this, WelcomeActivity.class));
+                            finish();
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failed", task.getException());
+                            Toast.makeText(LoginActivity.this, R.string.auth_failed,
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     public void onLoginFailed() {
@@ -71,12 +106,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validate() {
-        Log.d("LoginActivity", "Validate");
+        Log.d(TAG, "Validate");
         boolean valid = true;
-
-        //Grab email and password input from login screen
-        _emailField = (EditText) findViewById(R.id.login_email_input);
-        _passwordField = (EditText) findViewById(R.id.login_password_input);
 
         String email = _emailField.getText().toString();
         String password = _passwordField.getText().toString();

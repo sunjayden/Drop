@@ -1,5 +1,8 @@
 package gatech.cs2340.android.drop.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 /**
@@ -7,12 +10,16 @@ import java.util.List;
  */
 
 public class AccountDAO {
-    public void addAccount(Account account) {
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
+    public void registerAccount(Account account) {
+        String accountId = account.getEmail().replace("@", " ");
+        accountId = accountId.replace(".", " ");
+        mDatabase.child("Account").child(accountId).setValue(account);
     }
 
-    public Account getAccount(String email) {
-        return null;
+    public boolean checkAccount(String email, String password) {
+        return false;
     }
 
     public List<Account> getAccount() {
