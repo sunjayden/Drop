@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <!-- Welcome Activity -->
         <activity
             android:name=".controllers.WelcomeActivity"
@@ -63,6 +64,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controllers.LoginActivity" />
         </activity>
+        <activity android:name=".controllers.TestingActivity"></activity>
     </application>
 
 </manifest>

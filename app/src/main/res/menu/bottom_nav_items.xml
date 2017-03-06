@@ -3,6 +3,7 @@
 
 
     <item
+        android:id="@+id/newspaper"
         android:bottom="10dp"
         android:icon="@drawable/newspaper"
         android:left="10dp"
@@ -11,23 +12,27 @@
         android:top="10dp" />
 
     <item
+        android:id="@+id/placeholder"
         android:icon="@drawable/placeholder"
         android:right="10dp"
         android:title="Map" />
 
 
     <item
+        android:id="@+id/plus"
         android:icon="@drawable/plus"
         android:right="10dp"
         android:title="Add" />
 
     <item
+        android:id="@+id/graph"
         android:icon="@drawable/graph"
         android:right="10dp"
         android:title="Graph" />
 
 
     <item
+        android:id="@+id/setting"
         android:icon="@drawable/settings"
         android:right="20dp"
         android:title="Setting" />
