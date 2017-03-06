@@ -1,5 +1,7 @@
 package gatech.cs2340.android.drop.model;
 
+import gatech.cs2340.android.drop.controllers.AccountDAO;
+
 /**
  * Created by Jayden Sun on 3/3/17.
  */

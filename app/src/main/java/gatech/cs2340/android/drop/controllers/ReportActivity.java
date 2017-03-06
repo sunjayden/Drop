@@ -30,23 +30,23 @@ public class ReportActivity extends AppCompatActivity {
 
                     case R.id.newspaper:
                         Toast.makeText(ReportActivity.this, "Action Report clicked", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ReportActivity.this, TestingActivity.class));
+                        startActivity(new Intent(ReportActivity.this, AddReportActivity.class));
                         break;
                     case R.id.placeholder:
                         Toast.makeText(ReportActivity.this, "Action Map clicked", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ReportActivity.this, TestingActivity.class));
+                        startActivity(new Intent(ReportActivity.this, AddReportActivity.class));
                         break;
                     case R.id.plus:
                         Toast.makeText(ReportActivity.this, "Action Add clicked", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ReportActivity.this, TestingActivity.class));
+                        startActivity(new Intent(ReportActivity.this, AddReportActivity.class));
                         break;
                     case R.id.graph:
                         Toast.makeText(ReportActivity.this, "Action Graph clicked", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ReportActivity.this, TestingActivity.class));
+                        startActivity(new Intent(ReportActivity.this, AddReportActivity.class));
                         break;
                     case R.id.setting:
                         Toast.makeText(ReportActivity.this, "Action Setting clicked", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ReportActivity.this, TestingActivity.class));
+                        startActivity(new Intent(ReportActivity.this, AddReportActivity.class));
                         break;
                 }
                 return true;

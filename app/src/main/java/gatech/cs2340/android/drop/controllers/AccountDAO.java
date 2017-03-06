@@ -1,9 +1,11 @@
-package gatech.cs2340.android.drop.model;
+package gatech.cs2340.android.drop.controllers;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
+
+import gatech.cs2340.android.drop.model.Account;
 
 /**
  * Created by Jayden Sun on 3/3/17.
