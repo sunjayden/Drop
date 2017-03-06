@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <!-- Welcome Activity -->
         <activity
             android:name=".controllers.WelcomeActivity"
@@ -56,32 +57,27 @@
         <activity
             android:name=".controllers.ReportActivity"
             android:label="Reports"
-            android:parentActivityName=".controllers.ReportActivity">
-        </activity>
+            android:parentActivityName=".controllers.ReportActivity"></activity>
         <!-- Map Activity -->
         <activity
             android:name=".controllers.MapActivity"
             android:label="Map"
-            android:parentActivityName=".controllers.MapActivity">
-        </activity>
+            android:parentActivityName=".controllers.MapActivity"></activity>
         <!-- Add Report Activity -->
         <activity
             android:name=".controllers.AddReportActivity"
             android:label="Add Report"
-            android:parentActivityName=".controllers.AddReportActivity">
-        </activity>
+            android:parentActivityName=".controllers.AddReportActivity"></activity>
         <!-- Historical Report Activity -->
         <activity
             android:name=".controllers.HistoricalActivity"
             android:label="Historical Report"
-            android:parentActivityName=".controllers.HistoricalActivity">
-        </activity>
+            android:parentActivityName=".controllers.HistoricalActivity"></activity>
         <!-- Setting Activity -->
         <activity
             android:name=".controllers.SettingActivity"
             android:label="Setting"
-            android:parentActivityName=".controllers.SettingActivity">
-        </activity>
+            android:parentActivityName=".controllers.SettingActivity"></activity>
     </application>
 
 </manifest>
