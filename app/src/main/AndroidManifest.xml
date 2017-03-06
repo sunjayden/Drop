@@ -58,11 +58,29 @@
             android:label="Reports"
             android:parentActivityName=".controllers.ReportActivity">
         </activity>
+        <!-- Map Activity -->
+        <activity
+            android:name=".controllers.MapActivity"
+            android:label="Map"
+            android:parentActivityName=".controllers.MapActivity">
+        </activity>
         <!-- Add Report Activity -->
         <activity
             android:name=".controllers.AddReportActivity"
             android:label="Add Report"
             android:parentActivityName=".controllers.AddReportActivity">
+        </activity>
+        <!-- Historical Report Activity -->
+        <activity
+            android:name=".controllers.HistoricalActivity"
+            android:label="Historical Report"
+            android:parentActivityName=".controllers.HistoricalActivity">
+        </activity>
+        <!-- Setting Activity -->
+        <activity
+            android:name=".controllers.SettingActivity"
+            android:label="Setting"
+            android:parentActivityName=".controllers.SettingActivity">
         </activity>
     </application>
 

@@ -3,38 +3,30 @@
 
 
     <item
-        android:bottom="10dp"
         android:icon="@drawable/newspaper"
         android:id="@+id/newspaper"
-        android:left="10dp"
-        android:right="40dp"
-        android:title="Report"
-        android:top="10dp" />
+        android:title="Report" />
 
     <item
         android:icon="@drawable/placeholder"
         android:id="@+id/placeholder"
-        android:right="10dp"
         android:title="Map" />
 
 
     <item
         android:icon="@drawable/plus"
         android:id="@+id/plus"
-        android:right="10dp"
         android:title="Add" />
 
     <item
         android:icon="@drawable/graph"
         android:id="@+id/graph"
-        android:right="10dp"
         android:title="Graph" />
 
 
     <item
         android:icon="@drawable/settings"
         android:id="@+id/setting"
-        android:right="20dp"
         android:title="Setting" />
 
 
