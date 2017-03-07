@@ -138,10 +138,10 @@ public class RegisterActivity extends AppCompatActivity {
         String password = _passwordField.getText().toString();
 
         if (name.isEmpty()) {
-            _passwordField.setError("Enter a valid name");
+            _nameField.setError("Enter a valid name");
             valid = false;
         } else {
-            _passwordField.setError(null);
+            _nameField.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {

@@ -88,11 +88,6 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Logging In...");
         progressDialog.show();
 
-        //Grab email and password input from login screen
-//        _emailField = (EditText) findViewById(R.id.login_email_input);
-//        _passwordField = (EditText) findViewById(R.id.login_password_input);
-
-
         String email = _emailField.getText().toString().trim();
         String password = _passwordField.getText().toString().trim();
 
