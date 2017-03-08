@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -57,6 +58,7 @@ public class SRFragment extends Fragment {
             Activity activity = this.getActivity();
 
 
+
         }
 
     }
@@ -82,18 +84,19 @@ public class SRFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-    private void setupRecyclerView( RecyclerView recyclerView) {
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         adapter = new SimpleSRRecyclerViewAdapter(Model.getInstance().get_sourceReports());
+        Log.d("Adapter", "Please Work!!!  " + adapter.toString());
         recyclerView.setAdapter(adapter);
     }
 
     public class SimpleSRRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleSRRecyclerViewAdapter.ViewHolder> {
 
-        private final List<SourceReport> SValues;
+        private final List<SourceReport> sValues;
 
         public SimpleSRRecyclerViewAdapter(List<SourceReport> items) {
-            SValues = items;
+            sValues = items;
         }
 
 
@@ -106,10 +109,10 @@ public class SRFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final SimpleSRRecyclerViewAdapter.ViewHolder holder, int position) {
-            holder.sReport = SValues.get(position);
+            holder.sReport = sValues.get(position);
 
-            holder.mIdView.setText("" + SValues.get(position).getId());
-            holder.mContentView.setText(SValues.get(position).toString());
+            holder.mIdView.setText("" + sValues.get(position).getId());
+            holder.mContentView.setText(sValues.get(position).toString());
 
             /*
              * set up a listener to handle if the user clicks on this list item, what should happen?
@@ -137,8 +140,9 @@ public class SRFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return SValues.size();
+            return sValues.size();
         }
+
 
 
         public class ViewHolder extends RecyclerView.ViewHolder {

@@ -18,8 +18,6 @@ import gatech.cs2340.android.drop.model.SourceReport;
 import gatech.cs2340.android.drop.model.Type;
 import gatech.cs2340.android.drop.model.Water;
 
-import static android.R.id.edit;
-
 public class EditSourceReport extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private TextView idnumber;
@@ -100,17 +98,20 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
             return;
         }
 
+        Log.d("Edit", "Got new sourceReport" + namefield.getText().toString());
+
         sourceReport.setName(namefield.getText().toString());
         sourceReport.setDate(date.getText().toString());
         sourceReport.setType((Type) waterSpinner.getSelectedItem());
         sourceReport.setWater((Water) conditionSpinner.getSelectedItem());
 
 
-        Log.d("Edit", "Got new sourceReport" + sourceReport);
         if (!editing) {
             model.addSourceReport(sourceReport);
+            Log.d("Edit", "here");
         } else {
             model.replaceSourceReport(sourceReport);
+            Log.d("Edit", "There");
         }
 
         Toast.makeText(EditSourceReport.this, "Source Report added", Toast.LENGTH_LONG).show();

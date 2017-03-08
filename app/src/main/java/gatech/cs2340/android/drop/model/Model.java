@@ -1,5 +1,7 @@
 package gatech.cs2340.android.drop.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,19 @@ public class Model {
      */
     public Model() {
         _sourceReports = new ArrayList<>();
+        loadDummyData();
     }
+
+
+    private void loadDummyData() {
+        _sourceReports.add(new SourceReport("report1", Type.LAKE, Water.WASTE));
+        _sourceReports.add(new SourceReport( "report2", Type.SPRING, Water.PORTABLE));
+        _sourceReports.add(new SourceReport("report3", Type.STREAM, Water.TREATABLECLEAR));
+        _sourceReports.add(new SourceReport("report4", Type.OTHER, Water.TREATABLEMUDDY));
+        _currentSourceReport = _sourceReports.get(0);
+    }
+
+
 
     public void registerAccount(String name, String email, String password, UserType userType) {
         accountDAO.registerAccount(new Account(name, email, password, userType));
@@ -61,9 +75,12 @@ public class Model {
      */
     public boolean addSourceReport(SourceReport sourceReport) {
         for (SourceReport s: _sourceReports) {
-            if (s.equals(sourceReport)) return false;
+            if (s.equals(sourceReport)) {
+                return false;
+            }
         }
         _sourceReports.add(sourceReport);
+        Log.d("Model", "added here");
         return true;
     }
 
