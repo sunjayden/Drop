@@ -70,7 +70,7 @@ public class ReportActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("Purity Report", "Go to purity Report");
-                Intent purityIntent = new Intent(ReportActivity.this, PurityReport.class);
+                Intent purityIntent = new Intent(ReportActivity.this, EditPurityReport.class);
                 startActivity(purityIntent);
             }
         });
