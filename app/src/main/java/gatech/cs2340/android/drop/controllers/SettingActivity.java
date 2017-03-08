@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Set;
-
 import gatech.cs2340.android.drop.R;
 
 /**
@@ -42,7 +40,7 @@ public class SettingActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.newspaper:
-                        startActivity(new Intent(SettingActivity.this, ReportActivity.class));
+                        startActivity(new Intent(SettingActivity.this, _SRActivity.class));
                         break;
                     case R.id.placeholder:
                         startActivity(new Intent(SettingActivity.this, MapActivity.class));
