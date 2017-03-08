@@ -87,7 +87,7 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
         sourceReport.setType((TYPE) waterSpinner.getSelectedItem());
         sourceReport.setWater((Water) ConditionSpinner.getSelectedItem());
 
-        model.addWaterReport(sourceReport);
+        model.addSourceReport(sourceReport);
         Toast.makeText(EditSourceReport.this, "Source Report added", Toast.LENGTH_LONG).show();
 
         startActivity(new Intent(EditSourceReport.this, SourceReportActivity.class));
