@@ -12,14 +12,23 @@ public enum UserType {
 
     private final String acctType;
 
+    /**
+     * Account user type
+     * @param _type account type of user
+     */
     UserType(String _type) {
         acctType = _type;
     }
 
+    /**
+     * Get account type
+     * @return account type
+     */
     public String getAcctType() {
         return acctType;
     }
 
+    @Override
     public String  toString() {
         return acctType;
     }

@@ -1,8 +1,5 @@
 package gatech.cs2340.android.drop.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gatech.cs2340.android.drop.controllers.AccountDAO;
 
 /**
@@ -18,22 +15,20 @@ public class Model {
     public static Model getInstance() { return _instance; }
 
     /**
-     * make a new model
+     * Model of this class
      */
     public Model() {
 
     }
 
+    /**
+     * Register the account
+     * @param name user's name
+     * @param email user's email
+     * @param password user's password
+     * @param userType user's account type
+     */
     public void registerAccount(String name, String email, String password, UserType userType) {
         accountDAO.registerAccount(new Account(name, email, password, userType));
     }
-
-    public void getAccount(String email) {
-         accountDAO.getAccount(email);
-    }
-
-    public ArrayList<Account> getAccount() {
-        return accountDAO.getAccount();
-    }
-
 }

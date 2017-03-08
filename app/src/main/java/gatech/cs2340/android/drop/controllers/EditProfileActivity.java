@@ -71,6 +71,10 @@ public class EditProfileActivity  extends AppCompatActivity {
         });
     }
 
+    /**
+     * Validate if the account information is valid
+     * @return if account is valid
+     */
     private boolean validate() {
         Log.d(TAG, "Validate");
         boolean valid = true;
@@ -103,6 +107,9 @@ public class EditProfileActivity  extends AppCompatActivity {
         return valid;
     }
 
+    /**
+     * update the account information in FireBase
+     */
     private void updateFireBaseAccount() {
 
         String password = _passwordText.getText().toString().trim();

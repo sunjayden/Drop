@@ -41,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
 
-
     public static List<UserType> legalUserType = Arrays.asList(UserType.values());
 
     @Override
@@ -73,6 +72,9 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    /**
+     * Create the account if valid
+     */
     private void create() {
         Log.d(TAG, "Create Account Button Clicked");
 
@@ -125,10 +127,17 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Show error when the information is invalid
+     */
     public void onRegisterFailed() {
         Toast.makeText(getBaseContext(), "Incorrect name, email or password!", Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Validate if the registered account information is valid
+     * @return if the account information is valid
+     */
     private boolean validate() {
         Log.d(TAG, "Validate");
         boolean valid = true;

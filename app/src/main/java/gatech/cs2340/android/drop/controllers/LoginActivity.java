@@ -71,6 +71,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Login into the main dashboard
+     */
     private void login() {
         Log.d(TAG, "Login Button Clicked");
 
@@ -114,10 +117,17 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Show error when login failed
+     */
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Incorrect email or password!", Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Validate if the enter account information is valid
+     * @return if the account info is valid
+     */
     private boolean validate() {
         Log.d(TAG, "Validate");
         boolean valid = true;

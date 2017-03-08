@@ -9,13 +9,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import gatech.cs2340.android.drop.model.Account;
-
-import static android.R.attr.value;
-import static android.R.id.list;
 
 /**
  * Created by Jayden Sun on 3/3/17.
@@ -26,12 +21,20 @@ public class AccountDAO {
 
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
+    /**
+     * Register the account into the database
+     * @param account user's account to be registered
+     */
     public void registerAccount(Account account) {
         String accountId = account.getEmail().replace("@", " ");
         accountId = accountId.replace(".", " ");
         mDatabase.child("Account").child(accountId).setValue(account);
     }
 
+    /**
+     * Get the user account information
+     * @param email user's email
+     */
     public void getAccount(String email) {
         mDatabase = FirebaseDatabase.getInstance().getReference("Account");
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -52,6 +55,10 @@ public class AccountDAO {
 
     }
 
+    /**
+     * Get a list of current accounts
+     * @return the list of all registered account
+     */
     public ArrayList<Account> getAccount() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Account");
         final ArrayList<Account> list = new ArrayList<Account>();
@@ -70,9 +77,5 @@ public class AccountDAO {
                     }
                 });
         return list;
-    }
-
-    public void updateAccount(Account account) {
-
     }
 }
