@@ -23,12 +23,14 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
     private TextView idnumber;
     private EditText date;
     private EditText namefield;
+    private EditText reportNumber;
     private EditText location;
     private Spinner waterSpinner;
     private Spinner ConditionSpinner;
 
     private SourceReport sourceReport;
     private String _loc;
+    private static int i = 1;
 
 
 
@@ -40,10 +42,16 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
         idnumber = (TextView) findViewById(R.id.sourceReport_reportNumber);
         date = (EditText) findViewById(R.id.edit_sourceReport_date);
         namefield = (EditText) findViewById(R.id.edit_sourceReport_Name);
+        reportNumber = (EditText) findViewById(R.id.edit_sr_rn);
         location = (EditText) findViewById(R.id.edit_sr_location);
         waterSpinner = (Spinner) findViewById(R.id.edit_sr_type);
         ConditionSpinner = (Spinner) findViewById(R.id.edit_sr_waterCondition);
 
+        /*
+          Set the report number
+         */
+        reportNumber.setText(Integer.toString(i));
+        i++;
         /*
           Set up the adapter to display the allowable locations
          */
