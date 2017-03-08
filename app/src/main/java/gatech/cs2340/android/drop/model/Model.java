@@ -24,7 +24,7 @@ public class Model {
     private SourceReport _currentSourceReport;
 
     /** Null Object pattern, returned when no sourceReport is found */
-    private final SourceReport theNullCourse = new SourceReport("No Such SR", TYPE.OTHER, Water.WASTE);
+    private final SourceReport theNullCourse = new SourceReport("No Such SR", gatech.cs2340.android.drop.model.Type.OTHER, Water.WASTE);
 
     /**
      * make a new model

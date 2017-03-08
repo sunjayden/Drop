@@ -11,7 +11,7 @@ public class SourceReport implements Parcelable {
     private int _id;
     private String _name;
     private String _location;
-    private TYPE _type;     // THIS IS THE TYPE
+    private Type _type;     // THIS IS THE Type
     private Water _water;  // this is the condition
 
     // ADD an attribute
@@ -37,8 +37,8 @@ public class SourceReport implements Parcelable {
         this._date = date;
     }
 
-    public TYPE getType() {return _type;}
-    public void setType(TYPE _type) {this._type = _type;}
+    public Type getType() {return _type;}
+    public void setType(Type _type) {this._type = _type;}
 
     public Water getWater() {return _water;}
     public void setWater(Water water) {_water = water;}
@@ -50,7 +50,7 @@ public class SourceReport implements Parcelable {
      * @param name      the name of the reporter
      * @param loc     the location of water
      */
-    public SourceReport(String name, TYPE loc) {
+    public SourceReport(String name, Type loc) {
 
         this(name, loc, Water.WASTE);
     }
@@ -62,7 +62,7 @@ public class SourceReport implements Parcelable {
      * @param water water condition
      */
 
-    public SourceReport(String name, TYPE type, Water water) {
+    public SourceReport(String name, Type type, Water water) {
         _name = name;
         _type = type;
         _id = SourceReport.Next_Id++;
@@ -76,6 +76,30 @@ public class SourceReport implements Parcelable {
      */
     public SourceReport() {
     }
+
+    public static int findConditionPosition(Water water) {
+        int i = 0;
+        Water[] array = Water.values();
+        while (i < array.length) {
+            if (water.equals(array[i])) {
+                i++;
+            }
+        }
+        return 0;
+    }
+
+    public static int findWaterPosition(Type type) {
+        int i = 0;
+        Type[] array = Type.values();
+        while (i < array.length) {
+            if (type.equals(array[i])) {
+                i++;
+            }
+        }
+        return 0;
+    }
+
+
 
     /**
      *

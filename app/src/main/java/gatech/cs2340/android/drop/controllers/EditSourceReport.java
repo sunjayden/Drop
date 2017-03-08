@@ -13,10 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import gatech.cs2340.android.drop.R;
-import gatech.cs2340.android.drop.model.TYPE;
 import gatech.cs2340.android.drop.model.Model;
 import gatech.cs2340.android.drop.model.SourceReport;
+import gatech.cs2340.android.drop.model.Type;
 import gatech.cs2340.android.drop.model.Water;
+
+import static android.R.id.edit;
 
 public class EditSourceReport extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -26,13 +28,13 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
     private EditText reportNumber;
     private EditText location;
     private Spinner waterSpinner;
-    private Spinner ConditionSpinner;
+    private Spinner conditionSpinner;
 
     private SourceReport sourceReport;
     private String _loc;
     private static int i = 1;
 
-
+    private boolean editing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +47,13 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
         reportNumber = (EditText) findViewById(R.id.edit_sr_rn);
         location = (EditText) findViewById(R.id.edit_sr_location);
         waterSpinner = (Spinner) findViewById(R.id.edit_sr_type);
-        ConditionSpinner = (Spinner) findViewById(R.id.edit_sr_waterCondition);
+        conditionSpinner = (Spinner) findViewById(R.id.edit_sr_waterCondition);
 
-        /*
-          Set the report number
-         */
-        reportNumber.setText(Integer.toString(i));
-        i++;
+
         /*
           Set up the adapter to display the allowable locations
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, TYPE.values());
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, gatech.cs2340.android.drop.model.Type.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         waterSpinner.setAdapter(adapter);
 
@@ -64,12 +62,27 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
          */
         ArrayAdapter<String> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Water.values());
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ConditionSpinner.setAdapter(adapter2);
+        conditionSpinner.setAdapter(adapter2);
 
-        sourceReport = new SourceReport();
-//
-//        namefield.setText(sourceReport.getName());
-//        idnumber.setText("" + sourceReport.getId());
+
+        /*
+        If a source report has been passed in, this was an edit, if not, this is a new add
+         */
+        if (getIntent().hasExtra(SRFragment.ARG_SR_ID)) {
+            sourceReport = (SourceReport) getIntent().getParcelableExtra(SRFragment.ARG_SR_ID);
+            waterSpinner.setSelection(SourceReport.findConditionPosition(sourceReport.getWater()));
+            conditionSpinner.setSelection(SourceReport.findWaterPosition(sourceReport.getType()));
+            editing = true;
+        } else {
+            sourceReport = new SourceReport();
+            editing = false;
+        }
+        namefield.setText(sourceReport.getName());
+        idnumber.setText("" + sourceReport.getId());
+        reportNumber.setText(Integer.toString(i));
+        i++;
+        date.setText(sourceReport.getDate());
+        location.setText(sourceReport.getLocation());
     }
 
        /* Source Report Extra , Not implemented ?*/
@@ -82,12 +95,24 @@ public class EditSourceReport extends AppCompatActivity implements AdapterView.O
         Log.d("Edit", "Add Source Report");
         Model model = Model.getInstance();
 
+        String name = namefield.getText().toString();
+        if (name.isEmpty()) {
+            return;
+        }
+
         sourceReport.setName(namefield.getText().toString());
         sourceReport.setDate(date.getText().toString());
-        sourceReport.setType((TYPE) waterSpinner.getSelectedItem());
-        sourceReport.setWater((Water) ConditionSpinner.getSelectedItem());
+        sourceReport.setType((Type) waterSpinner.getSelectedItem());
+        sourceReport.setWater((Water) conditionSpinner.getSelectedItem());
 
-        model.addWaterReport(sourceReport);
+
+        Log.d("Edit", "Got new sourceReport" + sourceReport);
+        if (!editing) {
+            model.addSourceReport(sourceReport);
+        } else {
+            model.replaceSourceReport(sourceReport);
+        }
+
         Toast.makeText(EditSourceReport.this, "Source Report added", Toast.LENGTH_LONG).show();
 
         startActivity(new Intent(EditSourceReport.this, SourceReportActivity.class));
