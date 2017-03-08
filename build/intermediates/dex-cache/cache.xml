@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_61fa08f41d5cf881198a9d372a6f99e60aa510b8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fcdbd7de44ea8675d55c2a2b63cdeddac2a4b1c">
+        <dex dex="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_48772abd479e47990412032b393d29d2c01ec8a8/classes.dex" />
+    </item>
+
+</items>
