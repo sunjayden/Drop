@@ -16,9 +16,8 @@ import android.widget.Toast;
 import gatech.cs2340.android.drop.R;
 import gatech.cs2340.android.drop.model.Condition;
 import gatech.cs2340.android.drop.model.Model;
-import gatech.cs2340.android.drop.model.SourceReport;
-import gatech.cs2340.android.drop.model.TYPE;
-import gatech.cs2340.android.drop.model.Water;
+import gatech.cs2340.android.drop.model.PurityReport;
+
 
 public class EditPurityReport extends AppCompatActivity {
 
@@ -31,7 +30,7 @@ public class EditPurityReport extends AppCompatActivity {
     private EditText virusPPM;
     private EditText contaminantPPM;
 
-    private PurityReport sourceReport;
+    private PurityReport purityReport;
     private String condition;
     private static int i = 1;
 
@@ -55,7 +54,7 @@ public class EditPurityReport extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         conditionSpinner.setAdapter(adapter);
 
-        PurityReport = new PurityReport();
+        PurityReport purityReport= new PurityReport();
 
     }
 
@@ -64,16 +63,16 @@ public class EditPurityReport extends AppCompatActivity {
         Model model = Model.getInstance();
 
 
-        PurityReport.setDate(reportNo.setInputType(InputType.TYPE_CLASS_DATETIME));
-        PurityReport.setName(reportName.getText().toString());
-        PurityReport.setLatitude(Latitude.setInputType(InputType.TYPE_CLASS_NUMBER));
-        PurityReport.setLongitude(Longitude.setInputType(InputType.TYPE_CLASS_NUMBER));
-        PurityReport.setType((Condition) conditionSpinner.getSelectedItem());
-        PurityReport.setvirusPPM(virusPPM.setInputType(InputType.TYPE_CLASS_NUMBER));
-        PurityReport.setcontaminantPPM(contaminantPPM.setInputType(InputType.TYPE_CLASS_NUMBER));
+        purityReport.set_date(reportNo.getText().toString());
+        purityReport.set_name(reportName.getText().toString());
+        purityReport.set_latitude(Latitude.getText().toString());
+        purityReport.set_longitude(Longitude.getText().toString());
+        purityReport.set_condition((Condition) conditionSpinner.getSelectedItem());
+        purityReport.set_virus(virusPPM.getText().toString());
+        purityReport.set_Contaminant(contaminantPPM.getText().toString());
 
 
-        model.addSourceReport(PurityReport);
+        model.addSourceReport(purityReport);
         Toast.makeText(EditPurityReport.this, "Purity Report added", Toast.LENGTH_LONG).show();
 
         startActivity(new Intent(EditPurityReport.this, SourceReportActivity.class));
