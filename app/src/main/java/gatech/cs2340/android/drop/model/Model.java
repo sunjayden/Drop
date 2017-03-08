@@ -3,6 +3,7 @@ package gatech.cs2340.android.drop.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import gatech.cs2340.android.drop.BuildConfig;
 import gatech.cs2340.android.drop.controllers.AccountDAO;
 
 /**
@@ -72,6 +73,27 @@ public class Model {
 
     public void setCurrentSourceReport(SourceReport sourceReport) {
         _currentSourceReport = sourceReport;
+    }
+
+    public SourceReport getCourseReportById (int id) {
+        for (SourceReport s: _sourceReports) {
+            if (s.getId() == id) {
+                return s;
+            }
+        }
+        return theNullCourse;
+    }
+
+    public void replaceSourceReport(SourceReport sourceReport) {
+        SourceReport existing = getCourseReportById(sourceReport.getId());
+
+        if (BuildConfig.DEBUG && sourceReport == null) {
+            throw new AssertionError();
+        }
+        existing.setName(existing.getName());
+        existing.setWater(existing.getWater());
+        existing.setLocation(existing.getLocation());
+        existing.setType(existing.getType());
     }
 
 }
