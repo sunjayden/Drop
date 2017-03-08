@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/ZijiaYe/github/Drop/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a921ab350c9a75ae2119e28ac55f068706b194aa">
+        <dex dex="/Users/ZijiaYe/github/Drop/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_04ab2a85fcb651f3accbf6d7ba0d41d80022c9ea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/ZijiaYe/github/Drop/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_61fa08f41d5cf881198a9d372a6f99e60aa510b8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="8fcdbd7de44ea8675d55c2a2b63cdeddac2a4b1c">
-        <dex dex="/Users/BobZhai/StudioProject/Drop/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_48772abd479e47990412032b393d29d2c01ec8a8/classes.dex" />
+        <dex dex="/Users/ZijiaYe/github/Drop/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_36b38d495baed554531b6daeb3e2b99d933c7714/classes.dex" />
     </item>
 
 </items>

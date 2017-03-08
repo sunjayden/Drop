@@ -123,7 +123,7 @@
             android:name=".controllers.SourceReportActivity"
             android:label="@string/title_activity_source_report"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controllers.PurityReport" />
+        <activity android:name=".controllers.EditPurityReport" />
         <activity android:name=".controllers.EditSourceReport"></activity>
     </application>
 
