@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                         // signed in user can be handled in the listener.
                         progressDialog.dismiss();
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(LoginActivity.this, WelcomeActivity.class));
+                            startActivity(new Intent(LoginActivity.this, ReportActivity.class));
                             finish();
                         } else {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());

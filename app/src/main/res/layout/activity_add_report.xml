@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_report_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/app_background"
+    android:paddingBottom="48dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="gatech.cs2340.android.drop.controllers.AddReportActivity"
+    >
+
+    <Button
+        android:text="Add Source Report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="148dp"
+        android:id="@+id/add_source" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        app:itemBackground="@color/colorAccent"
+        app:itemIconTint="#f1e5e2"
+        app:itemTextColor="#ffffff"
+        app:menu="@menu/bottom_nav_items" />
+
+    <Button
+        android:text="Add Purity Report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_purity"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/add_source" />
+</RelativeLayout>

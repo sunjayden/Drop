@@ -48,6 +48,72 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controllers.LoginActivity" />
         </activity>
+        <!-- Report Activity -->
+        <activity
+            android:name=".controllers.ReportActivity"
+            android:label="Reports"
+            android:parentActivityName=".controllers.ReportActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ReportActivity" />
+        </activity>
+        <!-- Map Activity -->
+        <activity
+            android:name=".controllers.MapActivity"
+            android:label="Map"
+            android:parentActivityName=".controllers.MapActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ReportActivity" />
+        </activity>
+        <!-- Add Report Activity -->
+        <activity
+            android:name=".controllers.AddReportActivity"
+            android:label="Add Report"
+            android:parentActivityName=".controllers.AddReportActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ReportActivity" />
+        </activity>
+        <!-- Historical Report Activity -->
+        <activity
+            android:name=".controllers.HistoricalActivity"
+            android:label="Historical Report"
+            android:parentActivityName=".controllers.HistoricalActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ReportActivity" />
+        </activity>
+        <!-- Setting Activity -->
+        <activity
+            android:name=".controllers.SettingActivity"
+            android:label="Setting"
+            android:parentActivityName=".controllers.SettingActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.ReportActivity" />
+        </activity>
+        <!-- Edit Profile Activity -->
+        <activity
+            android:name=".controllers.EditProfileActivity"
+            android:label="Edit Profile"
+            android:parentActivityName=".controllers.EditProfileActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.SettingActivity" />
+        </activity>
     </application>
 
 </manifest>

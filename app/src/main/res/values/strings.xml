@@ -16,4 +16,7 @@
     <string name="email_error">Email exist already</string>
     <string name="retrieve_password">Don\'t worry. It happens to anyone. Just send us your email address and we will send you a new one.</string>
     <string name="send_now">Send Now</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="security_log">Security Log</string>
+    <string name="save">Save</string>
 </resources>
