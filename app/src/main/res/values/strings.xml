@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Drop</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="privacy">Privacy policy &amp; Terms of use</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="acct_type">Account Type</string>
+    <string name="create_acct">Create Account</string>
+    <string name="already_acct">Already a member? Login</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sign_up"><u>New here? Sign Up</u></string>
+    <string name="auth_failed">Incorrect email or password</string>
+    <string name="acct_successful">Congratulation, account created! Please sign in</string>
+    <string name="email_error">Email exist already</string>
+    <string name="retrieve_password">Don\'t worry. It happens to anyone. Just send us your email address and we will send you a new one.</string>
+    <string name="send_now">Send Now</string>
 </resources>
