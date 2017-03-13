@@ -50,14 +50,14 @@
         </activity>
         <!-- Report Activity -->
         <activity
-            android:name=".controllers.ReportActivity"
+            android:name=".controllers.SourceReportActivity"
             android:label="Reports"
-            android:parentActivityName=".controllers.ReportActivity">
+            android:parentActivityName=".controllers.SourceReportActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ReportActivity" />
+                android:value=".controllers.SourceReportActivity" />
         </activity>
         <!-- Map Activity -->
         <activity
@@ -68,18 +68,18 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ReportActivity" />
+                android:value=".controllers.SourceReportActivity" />
         </activity>
         <!-- Add Report Activity -->
         <activity
-            android:name=".controllers.AddReportActivity"
+            android:name=".controllers.PurityReportActivity"
             android:label="Add Report"
-            android:parentActivityName=".controllers.AddReportActivity">
+            android:parentActivityName=".controllers.PurityReportActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ReportActivity" />
+                android:value=".controllers.SourceReportActivity" />
         </activity>
         <!-- Historical Report Activity -->
         <activity
@@ -90,7 +90,7 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ReportActivity" />
+                android:value=".controllers.SourceReportActivity" />
         </activity>
         <!-- Setting Activity -->
         <activity
@@ -101,7 +101,7 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".controllers.ReportActivity" />
+                android:value=".controllers.SourceReportActivity" />
         </activity>
         <!-- Edit Profile Activity -->
         <activity
@@ -113,6 +113,16 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controllers.SettingActivity" />
+        </activity>
+        <activity
+            android:name=".controllers.AddSourceReportActivity"
+            android:label="Add Source Report"
+            android:parentActivityName=".controllers.AddSourceReportActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".controllers.SourceReportActivity" />
         </activity>
     </application>
 

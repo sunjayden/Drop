@@ -1,6 +1,5 @@
 package gatech.cs2340.android.drop.controllers;
 
-import android.accounts.Account;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
@@ -29,8 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 import gatech.cs2340.android.drop.R;
 import gatech.cs2340.android.drop.model.User;
 
-import static android.R.attr.data;
-import static android.R.attr.value;
 import static gatech.cs2340.android.drop.controllers.RegisterActivity.legalUserType;
 
 public class EditProfileActivity extends AppCompatActivity {

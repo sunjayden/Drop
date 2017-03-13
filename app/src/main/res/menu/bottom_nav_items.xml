@@ -3,20 +3,20 @@
 
 
     <item
-        android:icon="@drawable/ic_report"
+        android:icon="@drawable/ic_source_report"
         android:id="@+id/ic_report"
-        android:title="Report" />
+        android:title="Source Report" />
+
+    <item
+        android:icon="@drawable/ic_purity_report"
+        android:id="@+id/ic_add"
+        android:title="Purity Report" />
 
     <item
         android:icon="@drawable/ic_map"
         android:id="@+id/ic_map"
         android:title="Map" />
 
-
-    <item
-        android:icon="@drawable/ic_add"
-        android:id="@+id/ic_add"
-        android:title="Add" />
 
     <item
         android:icon="@drawable/ic_graph"

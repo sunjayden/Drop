@@ -10,7 +10,7 @@
     android:background="@drawable/app_background"
     android:paddingBottom="48dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="gatech.cs2340.android.drop.controllers.AddReportActivity"
+    tools:context="gatech.cs2340.android.drop.controllers.PurityReportActivity"
     >
 
     <Button

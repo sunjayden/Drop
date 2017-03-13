@@ -19,4 +19,10 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="security_log">Security Log</string>
     <string name="save">Save</string>
+    <string name="location">Location</string>
+    <string name="waterType">Type of Water</string>
+    <string name="waterCondition">Condition of Water</string>
+    <string name="cancel">Cancel</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
 </resources>

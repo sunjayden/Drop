@@ -30,13 +30,13 @@ public class HistoricalActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.ic_report:
-                        startActivity(new Intent(HistoricalActivity.this, ReportActivity.class));
+                        startActivity(new Intent(HistoricalActivity.this, SourceReportActivity.class));
                         break;
                     case R.id.ic_map:
                         startActivity(new Intent(HistoricalActivity.this, MapActivity.class));
                         break;
                     case R.id.ic_add:
-                        startActivity(new Intent(HistoricalActivity.this, AddReportActivity.class));
+                        startActivity(new Intent(HistoricalActivity.this, PurityReportActivity.class));
                         break;
                     case R.id.ic_graph:
                         startActivity(new Intent(HistoricalActivity.this, HistoricalActivity.class));

@@ -10,18 +10,18 @@ import android.view.View;
 
 import gatech.cs2340.android.drop.R;
 
-public class ReportActivity extends AppCompatActivity {
+public class PurityReportActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_purity_report);
 
         //hide action bar
         getSupportActionBar().hide();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation_view);
-        View view = bottomNavigationView.findViewById(R.id.ic_report);
+        View view = bottomNavigationView.findViewById(R.id.ic_add);
         view.performClick();
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
 
@@ -30,19 +30,19 @@ public class ReportActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.ic_report:
-                        startActivity(new Intent(ReportActivity.this, ReportActivity.class));
+                        startActivity(new Intent(PurityReportActivity.this, SourceReportActivity.class));
                         break;
                     case R.id.ic_map:
-                        startActivity(new Intent(ReportActivity.this, MapActivity.class));
+                        startActivity(new Intent(PurityReportActivity.this, MapActivity.class));
                         break;
                     case R.id.ic_add:
-                        startActivity(new Intent(ReportActivity.this, AddReportActivity.class));
+                        startActivity(new Intent(PurityReportActivity.this, PurityReportActivity.class));
                         break;
                     case R.id.ic_graph:
-                        startActivity(new Intent(ReportActivity.this, HistoricalActivity.class));
+                        startActivity(new Intent(PurityReportActivity.this, HistoricalActivity.class));
                         break;
                     case R.id.ic_setting:
-                        startActivity(new Intent(ReportActivity.this, SettingActivity.class));
+                        startActivity(new Intent(PurityReportActivity.this, SettingActivity.class));
                         break;
                 }
                 return true;

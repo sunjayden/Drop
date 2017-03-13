@@ -37,13 +37,13 @@ public class SettingActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.ic_report:
-                        startActivity(new Intent(SettingActivity.this, ReportActivity.class));
+                        startActivity(new Intent(SettingActivity.this, SourceReportActivity.class));
                         break;
                     case R.id.ic_map:
                         startActivity(new Intent(SettingActivity.this, MapActivity.class));
                         break;
                     case R.id.ic_add:
-                        startActivity(new Intent(SettingActivity.this, AddReportActivity.class));
+                        startActivity(new Intent(SettingActivity.this, PurityReportActivity.class));
                         break;
                     case R.id.ic_graph:
                         startActivity(new Intent(SettingActivity.this, HistoricalActivity.class));

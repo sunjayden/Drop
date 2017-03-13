@@ -31,13 +31,13 @@ public class MapActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.ic_report:
-                        startActivity(new Intent(MapActivity.this, ReportActivity.class));
+                        startActivity(new Intent(MapActivity.this, SourceReportActivity.class));
                         break;
                     case R.id.ic_map:
                         startActivity(new Intent(MapActivity.this, MapActivity.class));
                         break;
                     case R.id.ic_add:
-                        startActivity(new Intent(MapActivity.this, AddReportActivity.class));
+                        startActivity(new Intent(MapActivity.this, PurityReportActivity.class));
                         break;
                     case R.id.ic_graph:
                         startActivity(new Intent(MapActivity.this, HistoricalActivity.class));
