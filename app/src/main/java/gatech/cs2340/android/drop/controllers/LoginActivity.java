@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Show error when login failed
      */
-    public void onLoginFailed() {
+    private void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Incorrect email or password!", Toast.LENGTH_LONG).show();
     }
 

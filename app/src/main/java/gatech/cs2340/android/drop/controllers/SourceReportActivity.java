@@ -27,6 +27,9 @@ public class SourceReportActivity extends AppCompatActivity {
 
     private FloatingActionButton fab;
 
+    /**
+     * ReportViewHolder to hold all the report info
+     */
     public static class ReportViewHolder extends RecyclerView.ViewHolder {
         public TextView date;
         public TextView reportNum;
@@ -77,7 +80,7 @@ public class SourceReportActivity extends AppCompatActivity {
                         startActivity(new Intent(SourceReportActivity.this, PurityReportActivity.class));
                         break;
                     case R.id.ic_map:
-                        startActivity(new Intent(SourceReportActivity.this, MapActivity.class));
+                        startActivity(new Intent(SourceReportActivity.this, MapsActivity.class));
                         break;
                     case R.id.ic_graph:
                         startActivity(new Intent(SourceReportActivity.this, HistoricalActivity.class));

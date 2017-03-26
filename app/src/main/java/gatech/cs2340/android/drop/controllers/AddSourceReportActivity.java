@@ -97,7 +97,7 @@ public class AddSourceReportActivity extends AppCompatActivity {
                 Log.d(TAG, "Cancel Button Clicked");
                 Toast.makeText(AddSourceReportActivity.this, "Report Cancelled",
                         Toast.LENGTH_LONG).show();
-                Intent cancelIntent = new Intent(AddSourceReportActivity.this, SourceReport.class);
+                Intent cancelIntent = new Intent(AddSourceReportActivity.this, SourceReportActivity.class);
                 startActivity(cancelIntent);
             }
         });
@@ -157,7 +157,7 @@ public class AddSourceReportActivity extends AppCompatActivity {
         startActivity(sourceIntent);
     }
 
-    public void onRegisterFailed() {
+    private void onRegisterFailed() {
         Toast.makeText(getBaseContext(), "Invalid Latitude or Longitude!", Toast.LENGTH_LONG).show();
     }
 
