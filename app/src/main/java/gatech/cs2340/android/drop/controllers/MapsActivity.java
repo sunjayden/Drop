@@ -1,26 +1,21 @@
 package gatech.cs2340.android.drop.controllers;
 
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,7 +26,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,12 +34,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import gatech.cs2340.android.drop.R;
-import gatech.cs2340.android.drop.model.User;
 
-import static gatech.cs2340.android.drop.R.string.waterType;
 import static java.lang.Double.parseDouble;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
@@ -76,7 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         startActivity(new Intent(MapsActivity.this, SourceReportActivity.class));
                         break;
                     case R.id.ic_map:
-                        startActivity(new Intent(MapsActivity.this, MapActivity.class));
+                        startActivity(new Intent(MapsActivity.this, MapsActivity.class));
                         break;
                     case R.id.ic_add:
                         startActivity(new Intent(MapsActivity.this, PurityReportActivity.class));
@@ -248,7 +239,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     /**
      * Zoom into the location
      * @param lat latitude of the location
-     * @param lng longtitude of the location
+     * @param lng longitude of the location
      * @param zoom zoom degree
      */
     public void goToLocationZoom (double lat, double lng, float zoom) {

@@ -33,7 +33,7 @@ public class HistoricalActivity extends AppCompatActivity {
                         startActivity(new Intent(HistoricalActivity.this, SourceReportActivity.class));
                         break;
                     case R.id.ic_map:
-                        startActivity(new Intent(HistoricalActivity.this, MapActivity.class));
+                        startActivity(new Intent(HistoricalActivity.this, MapsActivity.class));
                         break;
                     case R.id.ic_add:
                         startActivity(new Intent(HistoricalActivity.this, PurityReportActivity.class));

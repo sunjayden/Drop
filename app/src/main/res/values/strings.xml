@@ -26,4 +26,7 @@
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
     <string name="title_activity_maps">Map</string>
+    <string name="overallCond">Overall Condition</string>
+    <string name="virus">Virus PPM</string>
+    <string name="contaminant">Contaminant PPM</string>
 </resources>

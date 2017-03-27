@@ -22,66 +22,48 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
-import java.util.Arrays;
-import java.util.List;
 import java.text.SimpleDateFormat;
-import java.util.Random;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 import gatech.cs2340.android.drop.R;
-import gatech.cs2340.android.drop.model.SourceReport;
+import gatech.cs2340.android.drop.model.PurityReport;
 import gatech.cs2340.android.drop.model.User;
 
-public class AddSourceReportActivity extends AppCompatActivity {
-
-    private static final String TAG = "AddSourceReportActivity";
+public class AddPurityReportActivity extends AppCompatActivity {
 
     private EditText _lati;
     private EditText _long;
-    private Spinner _waterTypeSpinner;
-    private Spinner _waterConditionSpinner;
+    private Spinner _conditionTypeSpinner;
+    private EditText _virus;
+    private EditText _contaminant;
     private DatabaseReference mDatabase;
     private FirebaseUser user;
     FirebaseDatabase database;
+    private List legalOverallCondition = Arrays.asList("Safe", "Treatable", "Unsafe");
 
-    private List legalWaterType = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
-    private List legalWaterCondition = Arrays.asList("Waste", "Treatable-Clear", "Treatable-Muddy", "Potable");
-
+    private static final String TAG = "AddSourceReportActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_source_report);
+        setContentView(R.layout.activity_add_purity_report);
 
         //Set Spinner
-        _waterTypeSpinner = (Spinner) findViewById(R.id.water_type_spinner);
+        _conditionTypeSpinner = (Spinner) findViewById(R.id.overall_condition_spinner);
 
         //show in spinner
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalWaterType);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalOverallCondition);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        _waterTypeSpinner.setAdapter(typeAdapter);
+        _conditionTypeSpinner.setAdapter(typeAdapter);
 
         //change spinner triangle color to white
-        _waterTypeSpinner.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.white),
+        _conditionTypeSpinner.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.white),
                 PorterDuff.Mode.SRC_ATOP);
 
-        //Set Spinner
-        _waterConditionSpinner = (Spinner) findViewById(R.id.water_condition_spinner);
-
-        //show in spinner
-        ArrayAdapter<String> conditionAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalWaterCondition);
-        conditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        _waterConditionSpinner.setAdapter(conditionAdapter);
-
-        //change spinner triangle color to white
-        _waterConditionSpinner.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.white),
-                PorterDuff.Mode.SRC_ATOP);
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        Log.d(TAG, user+"");
-        final String uid = user.getUid();
-
-        Button createSp = (Button) findViewById(R.id.create_sp);
+        Button createSp = (Button) findViewById(R.id.create_pr);
         createSp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,27 +71,32 @@ public class AddSourceReportActivity extends AppCompatActivity {
             }
         });
 
-        Button cancelSp = (Button) findViewById(R.id.cancel_sp);
+        Button cancelSp = (Button) findViewById(R.id.cancel_pr);
         cancelSp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Cancel Button Clicked");
-                Toast.makeText(AddSourceReportActivity.this, "Report Cancelled",
+                Toast.makeText(AddPurityReportActivity.this, "Report Cancelled",
                         Toast.LENGTH_LONG).show();
-                Intent cancelIntent = new Intent(AddSourceReportActivity.this, SourceReportActivity.class);
+                Intent cancelIntent = new Intent(AddPurityReportActivity.this, PurityReportActivity.class);
                 startActivity(cancelIntent);
             }
         });
     }
 
     private void createReport() {
-        _lati = (EditText) findViewById(R.id.rp_lat);
-        _long = (EditText) findViewById(R.id.rp_long);
+        _lati = (EditText) findViewById(R.id.pr_lat);
+        _long = (EditText) findViewById(R.id.pr_long);
+        _virus = (EditText) findViewById(R.id.pr_virus);
+        _contaminant = (EditText) findViewById(R.id.pr_contaminant);
+
 
         final String latitude = _lati.getText().toString().trim();
         final String longitude = _long.getText().toString().trim();
-        final String waterType = (String)_waterTypeSpinner.getSelectedItem();
-        final String waterCondition = (String)_waterConditionSpinner.getSelectedItem();
+        final String virus = _virus.getText().toString().trim();
+        final String contaminant = _contaminant.getText().toString().trim();
+
+        final String overallCondition = (String)_conditionTypeSpinner.getSelectedItem();
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
@@ -118,8 +105,9 @@ public class AddSourceReportActivity extends AppCompatActivity {
         final String reportId = id.replace(":", "");
 
         Random rand = new Random(System.currentTimeMillis());
-        final String reportNum = Math.abs(rand.nextInt()/1000000)+ "";
+        final String reportNum = Math.abs(rand.nextInt()/1000000) + "";
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
         // Read from the database
         database = FirebaseDatabase.getInstance();
@@ -136,10 +124,10 @@ public class AddSourceReportActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 User userInfo = dataSnapshot.child(uid).getValue(User.class);
-                SourceReport sp = new SourceReport(timeStamp, reportNum, userInfo._name,
-                        latitude, longitude, waterType, waterCondition);
+                PurityReport pr = new PurityReport(timeStamp, reportNum, userInfo._name,
+                        latitude, longitude, overallCondition,virus, contaminant);
                 mDatabase = FirebaseDatabase.getInstance().getReference();
-                mDatabase.child("sourceReports").child(reportId).setValue(sp);
+                mDatabase.child("purityReports").child(reportId).setValue(pr);
             }
 
             @Override
@@ -150,22 +138,24 @@ public class AddSourceReportActivity extends AppCompatActivity {
         });
 
         Log.d(TAG, "Create Source Report Clicked");
-        Toast.makeText(AddSourceReportActivity.this, "Report Created!",
+        Toast.makeText(AddPurityReportActivity.this, "Report Created!",
                 Toast.LENGTH_LONG).show();
-        Intent sourceIntent = new Intent(AddSourceReportActivity.this, SourceReportActivity.class);
+        Intent sourceIntent = new Intent(AddPurityReportActivity.this, PurityReportActivity.class);
         startActivity(sourceIntent);
     }
 
     private void onRegisterFailed() {
-        Toast.makeText(getBaseContext(), "Invalid Latitude or Longitude!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Invalid Information!", Toast.LENGTH_LONG).show();
     }
 
     private boolean validate() {
-        Log.d(TAG, "Validate source report");
+        Log.d(TAG, "Validate purity report");
         boolean valid = true;
 
         String latitude = _lati.getText().toString().trim();
         String longitude = _long.getText().toString().trim();
+        String virus = _virus.getText().toString().trim();
+        String contaminant = _contaminant.getText().toString().trim();
 
         if (latitude.isEmpty() || latitude.length() > 6) {
             _lati.setError("Enter a valid latitude");
@@ -181,7 +171,20 @@ public class AddSourceReportActivity extends AppCompatActivity {
             _long.setError(null);
         }
 
+        if (virus.isEmpty() || virus.length() > 6) {
+            _virus.setError("Enter a valid virus PPM");
+            valid = false;
+        } else {
+            _virus.setError(null);
+        }
+
+        if (contaminant.isEmpty() || contaminant.length() > 6) {
+            _contaminant.setError("Enter a valid contaminant PPM");
+            valid = false;
+        } else {
+            _contaminant.setError(null);
+        }
+
         return valid;
     }
-
 }

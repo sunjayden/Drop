@@ -40,7 +40,7 @@ public class SettingActivity extends AppCompatActivity {
                         startActivity(new Intent(SettingActivity.this, SourceReportActivity.class));
                         break;
                     case R.id.ic_map:
-                        startActivity(new Intent(SettingActivity.this, MapActivity.class));
+                        startActivity(new Intent(SettingActivity.this, MapsActivity.class));
                         break;
                     case R.id.ic_add:
                         startActivity(new Intent(SettingActivity.this, PurityReportActivity.class));
