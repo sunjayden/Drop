@@ -66,45 +66,49 @@
         android:layout_alignEnd="@+id/navigation_view"
         android:layout_marginEnd="17dp" />
 
-    <Spinner
-        android:id="@+id/vSpinner"
-        android:layout_width="115dp"
+
+    <EditText
+        android:id="@+id/editLocation"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp" />
+        android:layout_marginTop="26dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Location"
+        android:layout_below="@+id/cardDatesGraph" />
+
+    <EditText
+        android:id="@+id/editYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editLocation"
+        android:layout_alignLeft="@+id/editLocation"
+        android:hint="Year" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Virus/Contaminant"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/vSpinner"
-        android:layout_marginTop="11dp" />
+        android:layout_below="@+id/editYear"
+        android:layout_alignLeft="@id/editLocation" />
 
-    <EditText
-        android:id="@+id/editText"
+    <Spinner
+        android:id="@+id/vSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Location"
-        android:layout_below="@+id/cardDatesGraph"
-        android:layout_alignStart="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@id/editLocation"
+        android:layout_marginTop="13dp" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/vSpinner"
-        android:layout_toStartOf="@+id/imgFullscreen"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Year" />
+    <Button
+        android:id="@+id/submit_his"
+        style="@style/Button_half"
+        android:background="@drawable/rounder_corner_button"
+        android:text="submit"
+        android:textAllCaps="true"
+        android:layout_below="@+id/vSpinner"
+        android:layout_alignRight="@id/imgFullscreen"/>
+
 
 </RelativeLayout>
 
