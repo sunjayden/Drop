@@ -146,7 +146,6 @@ public class HistoricalActivity extends AppCompatActivity {
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataArray);
 
 
-        // exmaple stops
         graph.addSeries(series);
 
 
@@ -168,7 +167,7 @@ public class HistoricalActivity extends AppCompatActivity {
         if (location.equals("Atlanta") && year.equals("2015")) {
             return true;
         } else {
-            Toast.makeText(getBaseContext(), "Invalid info", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Invalid, Use Atlanta, 2015", Toast.LENGTH_LONG).show();
             return false;
         }
     }
