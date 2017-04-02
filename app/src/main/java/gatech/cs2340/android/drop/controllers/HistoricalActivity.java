@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,8 +22,11 @@ import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -106,24 +110,40 @@ public class HistoricalActivity extends AppCompatActivity {
         final String location = _location.getText().toString().trim();
         final String year = _year.getText().toString().trim();
 
+        if (!verify(location, year)) {
+            return;
+        }
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
         //dummy example:
-        Calendar calendar = Calendar.getInstance();
-        Date d1 = calendar.getTime();
-        calendar.add(Calendar.DATE, 1);
-        Date d2 = calendar.getTime();
-        calendar.add(Calendar.DATE, 1);
-        Date d3 = calendar.getTime();
+        List<String> dummyYear = new ArrayList<>();
+        dummyYear.add("2015/02/02");
+        dummyYear.add("2015/05/02");
+        dummyYear.add("2016/01/02");
+        dummyYear.add("2017/01/02");
+        dummyYear.add("2015/09/02");
+        int[] dummyPPM = {5,8,6,8,2};
+
+        List<DataPoint> dummyDataPoint = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        for (int i = 0; i < dummyYear.size(); i++) {
+            String[] ayear = dummyYear.get(i).split("/");
+            if (ayear[0].equals(year)) {
+                try {
+                    Date date = dateFormat.parse(dummyYear.get(i));
+                    dummyDataPoint.add(new DataPoint(date, dummyPPM[i]));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+        //conver from list to array
+        DataPoint[] dataArray = dummyDataPoint.toArray(new DataPoint[dummyDataPoint.size()]);
 
 
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(d1, 1),
-                new DataPoint(d2, 5),
-                new DataPoint(d3, 3)
-        });
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataArray);
 
 
         // exmaple stops
@@ -137,11 +157,20 @@ public class HistoricalActivity extends AppCompatActivity {
         graph.getGridLabelRenderer().setNumHorizontalLabels(3);
 
         // set manual x bounds to have nice steps
-        graph.getViewport().setMinX(d1.getTime());
-        graph.getViewport().setMaxX(d3.getTime());
+        graph.getViewport().setMinX(dummyDataPoint.get(0).getX());
+        graph.getViewport().setMaxX(dummyDataPoint.get(2).getX());
         graph.getViewport().setXAxisBoundsManual(true);
 
 
+    }
+
+    private boolean verify(String location, String year) {
+        if (location.equals("Atlanta") && year.equals("2015")) {
+            return true;
+        } else {
+            Toast.makeText(getBaseContext(), "Invalid info", Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
 
