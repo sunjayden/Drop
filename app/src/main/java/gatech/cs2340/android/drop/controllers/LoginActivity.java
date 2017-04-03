@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import gatech.cs2340.android.drop.R;
 
+import static com.google.android.gms.analytics.internal.zzy.e;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText _emailField;
@@ -37,7 +39,18 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                //Grab email and password input from login screen
+                _emailField = (EditText) findViewById(R.id.login_email_input);
+                _passwordField = (EditText) findViewById(R.id.login_password_input);
+                if (!validate()) {
+                    onLoginFailed();
+                    return;
+                } else {
+                    String email = _emailField.getText().toString().trim();
+                    String password = _passwordField.getText().toString().trim();
+
+                    login(email, password);
+                }
             }
         });
 
@@ -67,25 +80,13 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Login into the main dashboard
      */
-    private void login() {
+    private void login(String email, String password) {
         Log.d(TAG, "Login Button Clicked");
-
-        //Grab email and password input from login screen
-        _emailField = (EditText) findViewById(R.id.login_email_input);
-        _passwordField = (EditText) findViewById(R.id.login_password_input);
-
-        if (!validate()) {
-            onLoginFailed();
-            return;
-        }
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Logging In...");
         progressDialog.show();
-
-        String email = _emailField.getText().toString().trim();
-        String password = _passwordField.getText().toString().trim();
 
         //FireBase auth code
         mAuth.signInWithEmailAndPassword(email, password)
