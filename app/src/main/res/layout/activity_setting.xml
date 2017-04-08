@@ -2,10 +2,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/setting_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background"
     android:orientation="vertical"
     android:paddingBottom="48dp"
     android:paddingTop="@dimen/activity_vertical_margin">
@@ -20,7 +18,7 @@
             android:id="@+id/edit_profile_icon"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginStart="60dp"
             android:background="@null"
             android:contentDescription="@string/security_log"
@@ -46,11 +44,10 @@
         android:layout_marginTop="200dp">
 
         <TextView
-            android:id="@+id/edit_profile_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:text="EDIT PROFILE"
+            android:text="@string/edit_profile"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -58,8 +55,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:text="SECURITY LOG"
+            android:layout_marginStart="95dp"
+            android:text="@string/log"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -70,18 +67,20 @@
         android:orientation="vertical">
         <ImageButton
             android:id="@+id/setting_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logout"
-            android:background="@null"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="270dp"/>
+            android:layout_marginTop="270dp"
+            android:background="@null"
+            android:contentDescription="@string/logoutButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logout" />
         <TextView
-            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="92dp"
-            android:text="LOGOUT"
+            android:layout_marginTop="5dp"
+            android:text="@string/logout"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold" />

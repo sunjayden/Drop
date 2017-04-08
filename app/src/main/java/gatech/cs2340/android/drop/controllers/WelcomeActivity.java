@@ -1,8 +1,8 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +19,8 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         //hide action bar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         //welcome register button onClick
         Button register = (Button) findViewById(R.id.welcome_register_button);

@@ -4,14 +4,16 @@ package gatech.cs2340.android.drop.controllers;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -46,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private DatabaseReference mDatabase;
-    FirebaseDatabase database;
+    private FirebaseDatabase database;
 
 
     @Override
@@ -82,6 +84,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return true;
             }
 
+        });
+
+        //button
+        //welcome register button onClick
+        Button map = (Button) findViewById(R.id.map_button);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "Map Button Clicked");
+                //Intent registerIntent = new Intent(MapsActivity.this, RegisterActivity.class);
+                //startActivity(registerIntent);
+                geoLocate();
+            }
         });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -132,7 +147,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onMapLongClick(LatLng latLng) {
                 Geocoder gc = new Geocoder(MapsActivity.this);
-                List<Address> list = null;
+                List<Address> list;
                 try {
                     list = gc.getFromLocation(latLng.latitude, latLng.longitude,1);
                 } catch (IOException e) {
@@ -144,8 +159,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng cityChoose = new LatLng(latLng.latitude, latLng.longitude);
                 Log.d(TAG, name);
                 Log.d(TAG, cityChoose.latitude + " " + cityChoose.longitude + "");
-                StringBuilder sw = new StringBuilder();
-                sw.append("In " + name);
+                //StringBuilder sw = new StringBuilder();
+                //sw.append("In ").append(name);
 
                 //Marker marker = mMap.addMarker(new MarkerOptions().position(cityChoose)
                         //.title(name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
@@ -157,16 +172,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                StringBuilder sw = new StringBuilder();
+                //StringBuilder sw = new StringBuilder();
 //                sw.append(marker.getTitle());
 //                sw.append(System.getProperty("line.separator"));
-                sw.append("Latitude: " + marker.getPosition().latitude);
+                //sw.append("Latitude: ").append(marker.getPosition().latitude);
                 final double lat = marker.getPosition().latitude;
-                sw.append(System.getProperty("line.separator"));
-                sw.append("Longitude: " + marker.getPosition().longitude);
+                //sw.append(System.getProperty("line.separator"));
+                //sw.append("Longitude: ").append(marker.getPosition().longitude);
                 final double lng = marker.getPosition().longitude;
-                sw.append(System.getProperty("line.separator"));
-                String msg = sw.toString();
+                //sw.append(System.getProperty("line.separator"));
+                // String msg = sw.toString();
                 //Toast.makeText(MapsActivity.this, msg, Toast.LENGTH_LONG).show();
                 mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
                     @Override
@@ -176,7 +191,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     @Override
                     public View getInfoContents(Marker marker) {
-                        View view = getLayoutInflater().inflate(R.layout.info_window, null);
+                        final ViewGroup nullParent = null;
+                        View view = getLayoutInflater().inflate(R.layout.info_window, nullParent);
 //                        final TextView tvLocality = (TextView) view.findViewById(R.id.tv_locality);
 //                        final TextView tvLat = (TextView) view.findViewById(R.id.tv_lat);
 //                        final TextView tvLng = (TextView) view.findViewById(R.id.tv_lng);
@@ -240,25 +256,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * Zoom into the location
      * @param lat latitude of the location
      * @param lng longitude of the location
-     * @param zoom zoom degree
      */
-    public void goToLocationZoom (double lat, double lng, float zoom) {
+    private void goToLocationZoom(double lat, double lng) {
         LatLng ll = new LatLng(lat, lng);
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, zoom);
+        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, (float) 15);
         mMap.moveCamera(update);
     }
 
 
     /**
      * get location of  the view
-     * @param view view of the map
      */
-    public void geoLocate(View view) {
+    private void geoLocate() {
+        //     * @param view view of the map
         EditText et = (EditText) findViewById(R.id.editText1);
         String location = et.getText().toString();
 
         Geocoder gc = new Geocoder(MapsActivity.this);
-        List<Address> list = null;
+        List<Address> list;
 
         try {
             list = gc.getFromLocationName(location, 1);
@@ -271,7 +286,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Toast.makeText(MapsActivity.this, locality, Toast.LENGTH_LONG).show();
         double lat = address.getLatitude();
         double lon = address.getLongitude();
-        goToLocationZoom(lat, lon, 15 );
+        goToLocationZoom(lat, lon);
 
     }
 

@@ -25,17 +25,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import gatech.cs2340.android.drop.R;
@@ -43,25 +36,17 @@ import gatech.cs2340.android.drop.model.GraphData;
 import gatech.cs2340.android.drop.model.PurityReport;
 import gatech.cs2340.android.drop.model.User;
 
-import static com.google.android.gms.analytics.internal.zzy.d;
-import static com.google.android.gms.analytics.internal.zzy.g;
-import static com.google.android.gms.analytics.internal.zzy.i;
-import static com.google.android.gms.common.zze.rp;
-import static gatech.cs2340.android.drop.R.string.year;
-import static java.lang.Double.parseDouble;
-
 public class HistoricalActivity extends AppCompatActivity {
 
     private static final String TAG = "HistoricalActivity";
-
+    private final List<String> legalType = Arrays.asList("Virus", "Contaminant");
     private EditText _lat;
     private EditText _long;
     private EditText _year;
     private Spinner _typeSpinner;
-    private List legalType = Arrays.asList("Virus", "Contaminant");
     private DatabaseReference mDatabase;
-    private FirebaseUser user;
-    FirebaseDatabase database;
+    //private FireBaseUser user;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +54,8 @@ public class HistoricalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_historical);
 
         //hide action bar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation_view);
         View view = bottomNavigationView.findViewById(R.id.ic_graph);
@@ -105,18 +91,20 @@ public class HistoricalActivity extends AppCompatActivity {
         _typeSpinner = (Spinner) findViewById(R.id.vSpinner);
 
         // show in spinner
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this, R.layout.spinner_item, legalType);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, legalType);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _typeSpinner.setAdapter(typeAdapter);
 
         // change spinner triangle color to white
+        //PorterDuff.Mode.SRC.SRC_ATOP
         _typeSpinner.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.white),
-                PorterDuff.Mode.SRC.SRC_ATOP);
+                PorterDuff.Mode.SRC_ATOP);
 
         final Button submitSp = (Button) findViewById(R.id.submit_his);
 
         //get profile from database
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
         final String uid = user.getUid();
         // Read from the database
         database = FirebaseDatabase.getInstance();
@@ -151,9 +139,6 @@ public class HistoricalActivity extends AppCompatActivity {
                 showHistory();
             }
         });
-
-
-
     }
 
     private void showHistory() {
@@ -175,9 +160,12 @@ public class HistoricalActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 boolean isData = false;
                 GraphData[] graphData = new GraphData[13];
+                int totalCount = (int) dataSnapshot.getChildrenCount();
+                Log.e(TAG, "111: " + totalCount + "");
+                int count = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     PurityReport rp = snapshot.getValue(PurityReport.class);
-
+                    count++;
                     for(int i = 0; i < graphData.length; i++) {
                         graphData[i] = new GraphData();
                     }
@@ -195,7 +183,8 @@ public class HistoricalActivity extends AppCompatActivity {
                             graphData[index].addGraphData(rp._contaminant);
                         }
                     }
-                    if (isData == true) {
+                    Log.e(TAG, "111: " + count + "");
+                    if (isData) {
                         GraphView graph = (GraphView) findViewById(R.id.graph);
                         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                                 new DataPoint(1, graphData[1].getAvgPPM()),
@@ -205,12 +194,13 @@ public class HistoricalActivity extends AppCompatActivity {
                                 new DataPoint(5, graphData[5].getAvgPPM()),
                                 new DataPoint(6, graphData[6].getAvgPPM()),
                                 new DataPoint(7, graphData[7].getAvgPPM()),
-                                new DataPoint(8, 10),
+                                new DataPoint(8, graphData[8].getAvgPPM()),
                                 new DataPoint(9, graphData[9].getAvgPPM()),
                                 new DataPoint(10, graphData[10].getAvgPPM()),
                                 new DataPoint(11, graphData[11].getAvgPPM()),
-                                new DataPoint(12, 10)
+                                new DataPoint(12, graphData[12].getAvgPPM())
                         });
+                        Log.e(TAG, "333: " + graphData[3].getAvgPPM() + "");
                         graph.addSeries(series);
                         graph.getViewport().setXAxisBoundsManual(true);
                         graph.getViewport().setMinX(1);

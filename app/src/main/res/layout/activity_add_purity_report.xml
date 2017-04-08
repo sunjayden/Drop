@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_add_source_report"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,11 +12,11 @@
     tools:context="gatech.cs2340.android.drop.controllers.AddSourceReportActivity">
 
     <ImageView
-        android:id="@+id/login_logo"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginBottom="50dp"
         android:layout_marginTop="125dp"
+        android:contentDescription="@string/logo"
         android:scaleType="fitCenter"
         android:src="@drawable/register_logo" />
 
@@ -42,7 +40,8 @@
             style="@style/EditText"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned|numberDecimal" />
+            android:inputType="numberSigned|numberDecimal"
+            android:labelFor="@+id/pr_lat" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +57,8 @@
             style="@style/EditText"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned|numberDecimal" />
+            android:inputType="numberSigned|numberDecimal"
+            android:labelFor="@+id/pr_long" />
     </LinearLayout>
 
 
@@ -95,7 +95,8 @@
             style="@style/EditText"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:labelFor="@+id/pr_virus" />
     </LinearLayout>
 
     <LinearLayout
@@ -118,7 +119,8 @@
             style="@style/EditText"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:labelFor="@+id/pr_contaminant" />
     </LinearLayout>
 
 

@@ -3,31 +3,31 @@
 
 
     <item
-        android:icon="@drawable/ic_source_report"
         android:id="@+id/ic_report"
-        android:title="Source Report" />
+        android:icon="@drawable/ic_source_report"
+        android:title="@string/sourceReport" />
 
     <item
-        android:icon="@drawable/ic_purity_report"
         android:id="@+id/ic_add"
-        android:title="Purity Report" />
+        android:icon="@drawable/ic_purity_report"
+        android:title="@string/purityReport" />
 
     <item
-        android:icon="@drawable/ic_map"
         android:id="@+id/ic_map"
-        android:title="Map" />
+        android:icon="@drawable/ic_map"
+        android:title="@string/map" />
 
 
     <item
-        android:icon="@drawable/ic_graph"
         android:id="@+id/ic_graph"
-        android:title="Graph" />
+        android:icon="@drawable/ic_graph"
+        android:title="@string/graph" />
 
 
     <item
-        android:icon="@drawable/ic_setting"
         android:id="@+id/ic_setting"
-        android:title="Setting" />
+        android:icon="@drawable/ic_setting"
+        android:title="@string/setting" />
 
 
 </menu>

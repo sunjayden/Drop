@@ -18,29 +18,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date: "
-                android:textSize="15dp" />
+                android:text="@string/date"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2017/03/12 23:41:34"
-                android:textSize="15dp" />
+                android:text="@string/dateTemp"
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
-                android:text="Report #: "
-                android:textSize="15dp" />
+                android:text="@string/reportTemp"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_report_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1023"
-                android:textSize="15dp" />
+                android:text="@string/num"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -53,15 +53,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Worker: "
-                android:textSize="15dp" />
+                android:text="@string/worker"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_worker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jayden Sun"
-                android:textSize="15dp" />
+                android:text="@string/nameTemp"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,15 +72,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Latitude: "
-                android:textSize="15dp" />
+                android:text="@string/lat"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_lati"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-100.00"
-                android:textSize="15dp" />
+                android:text="@string/latTemp"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -92,15 +92,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Longitude: "
-                android:textSize="15dp" />
+                android:text="@string/lon"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_long"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-100.00"
-                android:textSize="15dp" />
+                android:text="@string/latTemp"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,15 +111,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Overall Condition: "
-                android:textSize="15dp" />
+                android:text="@string/overallCondition"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_overall_condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stream"
-                android:textSize="15dp" />
+                android:text="@string/stream"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -130,29 +130,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Virus PPM: "
-                android:textSize="15dp" />
+                android:text="@string/vir"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_virus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="200"
-                android:textSize="15dp" />
+                android:text="@string/num"
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:text="Contaminant PPM: "
-                android:textSize="15dp" />
+                android:text="@string/cont"
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/pr_contaminant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1023"
-                android:textSize="15dp" />
+                android:text="@string/num"
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 

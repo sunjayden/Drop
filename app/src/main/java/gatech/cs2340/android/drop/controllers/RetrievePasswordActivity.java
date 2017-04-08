@@ -1,9 +1,9 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,12 +16,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import gatech.cs2340.android.drop.R;
 
-import static android.R.attr.data;
-
 public class RetrievePasswordActivity extends AppCompatActivity {
 
-    private FirebaseAuth auth;
-    private EditText _emailField;
+    //private FireBaseAuth auth;
+    //private EditText _emailField;
     private static final String TAG = "RetrievePassActivity";
 
     @Override
@@ -42,11 +40,11 @@ public class RetrievePasswordActivity extends AppCompatActivity {
 
     private void getPassword() {
         //get email info
-        _emailField = (EditText) findViewById(R.id.retrieve_email_input);
+        EditText _emailField = (EditText) findViewById(R.id.retrieve_email_input);
         String emailAddress = _emailField.getText().toString().trim();
 
         //send password reset
-        auth = FirebaseAuth.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.sendPasswordResetEmail(emailAddress)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

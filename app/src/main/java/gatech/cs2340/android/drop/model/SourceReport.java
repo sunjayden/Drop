@@ -1,9 +1,5 @@
 package gatech.cs2340.android.drop.model;
 
-/**
- * Created by jaydensun on 3/12/17.
- */
-
 public class SourceReport {
     //public variable required by FireBase
     public String _date;

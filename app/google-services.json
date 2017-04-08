@@ -48,6 +48,13 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
+              "client_id": "833949332821-budr3ht625mq5cmc82ta4bcnhovecdh7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com-mikeMallow.Drop"
+              }
+            },
+            {
               "client_id": "833949332821-nqrmaifvvl9vidbj1hnqph80gvae364p.apps.googleusercontent.com",
               "client_type": 3
             }

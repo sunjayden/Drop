@@ -4,25 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/historical_report_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_background"
     android:paddingBottom="48dp"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="gatech.cs2340.android.drop.controllers.HistoricalActivity">
 
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
@@ -39,7 +37,8 @@
                 style="@style/EditText"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned|numberDecimal" />
+                android:inputType="numberSigned|numberDecimal"
+                android:labelFor="@+id/historical_lat" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +54,8 @@
                 style="@style/EditText"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned|numberDecimal" />
+                android:inputType="numberSigned|numberDecimal"
+                android:labelFor="@+id/historical_long" />
         </LinearLayout>
 
         <LinearLayout
@@ -76,14 +76,15 @@
                 style="@style/EditText"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:labelFor="@+id/historical_year" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,18 +100,17 @@
         </LinearLayout>
 
         <Button
-            android:layout_marginTop="32dp"
             android:id="@+id/submit_his"
             style="@style/Button_half"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/rounder_corner_button"
             android:text="@string/submit"
-            android:textAllCaps="true"
-            android:layout_marginBottom="25dp"/>
+            android:textAllCaps="true" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cardDatesGraph"
             card_view:cardBackgroundColor="@android:color/white"
             card_view:cardElevation="2sp"
             card_view:cardUseCompatPadding="true">
@@ -121,9 +121,9 @@
                 android:layout_margin="16dp">
 
                 <com.jjoe64.graphview.GraphView
+                    android:id="@+id/graph"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:id="@+id/graph" />
+                    android:layout_height="300dp" />
 
 
             </RelativeLayout>

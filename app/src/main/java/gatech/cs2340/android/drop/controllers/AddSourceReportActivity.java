@@ -2,9 +2,9 @@ package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,10 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.util.Arrays;
-import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Random;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 import gatech.cs2340.android.drop.R;
 import gatech.cs2340.android.drop.model.SourceReport;
@@ -35,18 +35,14 @@ import gatech.cs2340.android.drop.model.User;
 public class AddSourceReportActivity extends AppCompatActivity {
 
     private static final String TAG = "AddSourceReportActivity";
-
+    private final List<String> legalWaterType = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
+    private final List<String> legalWaterCondition = Arrays.asList("Waste", "Treatable-Clear", "Treatable-Muddy", "Potable");
     private EditText _lati;
     private EditText _long;
     private Spinner _waterTypeSpinner;
     private Spinner _waterConditionSpinner;
     private DatabaseReference mDatabase;
     private FirebaseUser user;
-    FirebaseDatabase database;
-
-    private List legalWaterType = Arrays.asList("Bottled", "Well", "Stream", "Lake", "Spring", "Other");
-    private List legalWaterCondition = Arrays.asList("Waste", "Treatable-Clear", "Treatable-Muddy", "Potable");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +53,7 @@ public class AddSourceReportActivity extends AppCompatActivity {
         _waterTypeSpinner = (Spinner) findViewById(R.id.water_type_spinner);
 
         //show in spinner
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalWaterType);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, legalWaterType);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _waterTypeSpinner.setAdapter(typeAdapter);
 
@@ -69,7 +65,7 @@ public class AddSourceReportActivity extends AppCompatActivity {
         _waterConditionSpinner = (Spinner) findViewById(R.id.water_condition_spinner);
 
         //show in spinner
-        ArrayAdapter<String> conditionAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalWaterCondition);
+        ArrayAdapter<String> conditionAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, legalWaterCondition);
         conditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _waterConditionSpinner.setAdapter(conditionAdapter);
 
@@ -79,7 +75,6 @@ public class AddSourceReportActivity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         Log.d(TAG, user+"");
-        final String uid = user.getUid();
 
         Button createSp = (Button) findViewById(R.id.create_sp);
         createSp.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +106,10 @@ public class AddSourceReportActivity extends AppCompatActivity {
         final String waterType = (String)_waterTypeSpinner.getSelectedItem();
         final String waterCondition = (String)_waterConditionSpinner.getSelectedItem();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(
+                DateFormat.SHORT,
+                DateFormat.SHORT,
+                Locale.US);
         Date date = new Date();
         final String timeStamp = dateFormat.format(date);
         String id = timeStamp.replace("/", "");
@@ -122,7 +120,7 @@ public class AddSourceReportActivity extends AppCompatActivity {
 
         final String uid = user.getUid();
         // Read from the database
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference("users");
 
         if (!validate()) {

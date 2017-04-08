@@ -7,42 +7,45 @@
     android:orientation="vertical"
     >
     <LinearLayout
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@color/white"
         android:orientation="horizontal"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
         >
 
         <TextView
-            android:id = "@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:text="Location: "
-            android:textSize="18dp"
+            android:layout_gravity="start|center_vertical"
+            android:text="@string/mapLocation"
+            android:textSize="18sp"
             />
         <EditText
-            android:textColor="@android:color/darker_gray"
             android:id = "@+id/editText1"
+            style="@style/EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:gravity="center_vertical"
-            android:hint = "Enter the place"
-            style="@style/EditText"
-            android:ems="10">
+            android:hint="@string/place"
+            android:maxLines="1"
+            android:textColor="@android:color/darker_gray">
 
             <requestFocus/>
 
         </EditText>
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/map_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:text="Go"
-            android:onClick="geoLocate"
+            android:layout_height="35dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginStart="25dp"
+            android:background="@color/colorAccent"
+            android:text="@string/go"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 
@@ -51,7 +54,7 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="555dp"
+        android:layout_height="558dp"
         map:cameraBearing="0"
         map:cameraTargetLat="40.7484"
         map:cameraTargetLng="-73.9857"
@@ -71,8 +74,6 @@
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
 
         app:itemBackground="@color/colorAccent"
         app:itemIconTint="#f1e5e2"

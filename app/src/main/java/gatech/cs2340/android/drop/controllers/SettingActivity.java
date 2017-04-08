@@ -1,10 +1,10 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +25,8 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         //hide action bar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation_view);
         View view = bottomNavigationView.findViewById(R.id.ic_setting);

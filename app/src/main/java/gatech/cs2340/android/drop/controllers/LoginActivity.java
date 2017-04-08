@@ -2,9 +2,9 @@ package gatech.cs2340.android.drop.controllers;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,15 +19,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import gatech.cs2340.android.drop.R;
 
-import static com.google.android.gms.analytics.internal.zzy.e;
-
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoginActivity";
     private EditText _emailField;
     private EditText _passwordField;
     private FirebaseAuth mAuth;
-
-    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +39,14 @@ public class LoginActivity extends AppCompatActivity {
                 //Grab email and password input from login screen
                 _emailField = (EditText) findViewById(R.id.login_email_input);
                 _passwordField = (EditText) findViewById(R.id.login_password_input);
-                if (!validate()) {
-                    onLoginFailed();
-                    return;
-                } else {
+                if (validate()) {
                     String email = _emailField.getText().toString().trim();
                     String password = _passwordField.getText().toString().trim();
 
                     login(email, password);
+                } else {
+                    onLoginFailed();
+                    //return;
                 }
             }
         });

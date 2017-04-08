@@ -2,9 +2,9 @@ package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,10 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import gatech.cs2340.android.drop.R;
@@ -34,17 +34,14 @@ import gatech.cs2340.android.drop.model.User;
 
 public class AddPurityReportActivity extends AppCompatActivity {
 
+    private static final String TAG = "AddSourceReportActivity";
+    final private List<String> legalOverallCondition = Arrays.asList("Safe", "Treatable", "Unsafe");
     private EditText _lati;
     private EditText _long;
     private Spinner _conditionTypeSpinner;
     private EditText _virus;
     private EditText _contaminant;
     private DatabaseReference mDatabase;
-    private FirebaseUser user;
-    FirebaseDatabase database;
-    private List legalOverallCondition = Arrays.asList("Safe", "Treatable", "Unsafe");
-
-    private static final String TAG = "AddSourceReportActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +52,7 @@ public class AddPurityReportActivity extends AppCompatActivity {
         _conditionTypeSpinner = (Spinner) findViewById(R.id.overall_condition_spinner);
 
         //show in spinner
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalOverallCondition);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, legalOverallCondition);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _conditionTypeSpinner.setAdapter(typeAdapter);
 
@@ -98,7 +95,10 @@ public class AddPurityReportActivity extends AppCompatActivity {
 
         final String overallCondition = (String)_conditionTypeSpinner.getSelectedItem();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(
+                DateFormat.SHORT,
+                DateFormat.SHORT,
+                Locale.US);
         Date date = new Date();
         final String timeStamp = dateFormat.format(date);
         String id = timeStamp.replace("/", "");
@@ -107,10 +107,11 @@ public class AddPurityReportActivity extends AppCompatActivity {
         Random rand = new Random(System.currentTimeMillis());
         final String reportNum = Math.abs(rand.nextInt()/1000000) + "";
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
         final String uid = user.getUid();
         // Read from the database
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference("users");
 
         if (!validate()) {

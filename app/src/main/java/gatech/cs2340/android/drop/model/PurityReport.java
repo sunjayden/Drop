@@ -1,9 +1,5 @@
 package gatech.cs2340.android.drop.model;
 
-/**
- * Created by jaydensun on 3/25/17.
- */
-
 public class PurityReport {
     //public variable required by FireBase
     public String _date;

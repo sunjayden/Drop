@@ -1,11 +1,11 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,52 +24,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import gatech.cs2340.android.drop.R;
 import gatech.cs2340.android.drop.model.PurityReport;
-import gatech.cs2340.android.drop.model.SourceReport;
 import gatech.cs2340.android.drop.model.User;
-
-import static gatech.cs2340.android.drop.R.string.waterCondition;
-import static gatech.cs2340.android.drop.R.string.waterType;
 
 public class PurityReportActivity extends AppCompatActivity {
 
     private static final String TAG = "SourceReportActivity";
 
     private FloatingActionButton fab;
-    private FirebaseUser user;
-    private DatabaseReference mDatabase;
-    FirebaseDatabase database;
-
-    /**
-     * ReportViewHolder to hold all the report info
-     */
-    public static class ReportViewHolder extends RecyclerView.ViewHolder {
-        public TextView date;
-        public TextView reportNum;
-        public TextView worker;
-        public TextView latitude;
-        public TextView longitude;
-        public TextView overallCondition;
-        public TextView virus;
-        public TextView contaminant;
-
-        public ReportViewHolder(View v) {
-            super(v);
-            date = (TextView)itemView.findViewById(R.id.pr_date);
-            reportNum = (TextView)itemView.findViewById(R.id.pr_report_number);
-            worker = (TextView)itemView.findViewById(R.id.pr_worker);
-            latitude = (TextView)itemView.findViewById(R.id.pr_lati);
-            longitude = (TextView)itemView.findViewById(R.id.pr_long);
-            overallCondition = (TextView)itemView.findViewById(R.id.pr_overall_condition);
-            virus = (TextView)itemView.findViewById(R.id.pr_virus);
-            contaminant = (TextView)itemView.findViewById(R.id.pr_contaminant);
-        }
-    }
-
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private DatabaseReference databaseReference;
+    //private DatabaseReference databaseReference;
     private FirebaseRecyclerAdapter<PurityReport, PurityReportActivity.ReportViewHolder> firebaseRecyclerAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +42,8 @@ public class PurityReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_purity_report);
 
         //hide action bar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation_view);
         View view = bottomNavigationView.findViewById(R.id.ic_add);
@@ -112,11 +78,12 @@ public class PurityReportActivity extends AppCompatActivity {
         fab = (FloatingActionButton) findViewById(R.id.add_purity_report);
 
         //get profile from database
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
         final String uid = user.getUid();
         // Read from the database
-        database = FirebaseDatabase.getInstance();
-        mDatabase = database.getReference("users");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference mDatabase = database.getReference("users");
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -150,7 +117,7 @@ public class PurityReportActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(false);
 
         //Database Initialization
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<PurityReport, PurityReportActivity.ReportViewHolder>(
                 PurityReport.class,
                 R.layout.purity_report_item,
@@ -190,5 +157,31 @@ public class PurityReportActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(firebaseRecyclerAdapter);
 
+    }
+
+    /**
+     * ReportViewHolder to hold all the report info
+     */
+    private static class ReportViewHolder extends RecyclerView.ViewHolder {
+        private final TextView date;
+        private final TextView reportNum;
+        private final TextView worker;
+        private final TextView latitude;
+        private final TextView longitude;
+        private final TextView overallCondition;
+        private final TextView virus;
+        private final TextView contaminant;
+
+        public ReportViewHolder(View v) {
+            super(v);
+            date = (TextView) itemView.findViewById(R.id.pr_date);
+            reportNum = (TextView) itemView.findViewById(R.id.pr_report_number);
+            worker = (TextView) itemView.findViewById(R.id.pr_worker);
+            latitude = (TextView) itemView.findViewById(R.id.pr_lati);
+            longitude = (TextView) itemView.findViewById(R.id.pr_long);
+            overallCondition = (TextView) itemView.findViewById(R.id.pr_overall_condition);
+            virus = (TextView) itemView.findViewById(R.id.pr_virus);
+            contaminant = (TextView) itemView.findViewById(R.id.pr_contaminant);
+        }
     }
 }

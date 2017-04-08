@@ -3,10 +3,10 @@ package gatech.cs2340.android.drop.controllers;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,8 +32,8 @@ import gatech.cs2340.android.drop.model.User;
 
 
 public class RegisterActivity extends AppCompatActivity {
+    public static final List<String> legalUserType = Arrays.asList("User", "Worker", "Manager", "Admin");
     private static final String TAG = "RegisterActivity";
-
     private EditText _nameField;
     private EditText _emailField;
     private EditText _passwordField;
@@ -41,9 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference mDatabase;
-
-    public static List legalUserType = Arrays.asList("User", "Worker", "Manager", "Admin");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         _userTypeSpinner = (Spinner) findViewById(R.id.user_type_spinner);
 
         //show in spinner
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalUserType);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, legalUserType);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _userTypeSpinner.setAdapter(typeAdapter);
 
@@ -129,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                         } else {
                             //Add to FireBase database
                             user = FirebaseAuth.getInstance().getCurrentUser();
+                            assert user != null;
                             String userId = user.getUid();
                             User user = new User(name, email, password, userType);
                             //get database instance
@@ -147,7 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
     /**
      * Show error when the information is invalid
      */
-    public void onRegisterFailed() {
+    private void onRegisterFailed() {
         Toast.makeText(getBaseContext(), "Incorrect name, email or password!", Toast.LENGTH_LONG).show();
     }
 

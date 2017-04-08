@@ -2,10 +2,10 @@ package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,9 +37,8 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText _nameText;
     private EditText _emailText;
     private EditText _passwordText;
-    private FirebaseUser user;
+    //private FireBaseUser user;
     private DatabaseReference mDatabase;
-    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class EditProfileActivity extends AppCompatActivity {
         _userTypeSpinner = (Spinner) findViewById(R.id.edit_profile_type_spinner);
 
         //show in spinner
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter(this,R.layout.spinner_item, legalUserType);
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.spinner_item, legalUserType);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _userTypeSpinner.setAdapter(typeAdapter);
 
@@ -64,10 +63,11 @@ public class EditProfileActivity extends AppCompatActivity {
         _nameText = (EditText) findViewById(R.id.edit_profile_name_input);
 
         //get profile from database
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
         final String uid = user.getUid();
         // Read from the database
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference("users");
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -169,9 +169,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
         //update FireBase auth
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String newPassword = password;
 
-        user.updatePassword(newPassword)
+        assert user != null;
+        user.updatePassword(password)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -185,6 +185,7 @@ public class EditProfileActivity extends AppCompatActivity {
         //update FireBase database
         mDatabase = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
         String userId = user.getUid();
         User userInfo = new User(name, email, password, userType);
         mDatabase.child("users").child(userId).setValue(userInfo);

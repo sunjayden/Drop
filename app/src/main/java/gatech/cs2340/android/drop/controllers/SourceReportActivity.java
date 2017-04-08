@@ -1,18 +1,17 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -25,35 +24,10 @@ public class SourceReportActivity extends AppCompatActivity {
 
     private static final String TAG = "SourceReportActivity";
 
-    private FloatingActionButton fab;
-
-    /**
-     * ReportViewHolder to hold all the report info
-     */
-    public static class ReportViewHolder extends RecyclerView.ViewHolder {
-        public TextView date;
-        public TextView reportNum;
-        public TextView reporter;
-        public TextView latitude;
-        public TextView longitude;
-        public TextView waterType;
-        public TextView waterCondition;
-
-        public ReportViewHolder(View v) {
-            super(v);
-            date = (TextView)itemView.findViewById(R.id.sp_date);
-            reportNum = (TextView)itemView.findViewById(R.id.sp_report_number);
-            reporter = (TextView)itemView.findViewById(R.id.sp_reporter);
-            latitude = (TextView)itemView.findViewById(R.id.sp_lati);
-            longitude = (TextView)itemView.findViewById(R.id.sp_long);
-            waterType = (TextView)itemView.findViewById(R.id.sp_water_type);
-            waterCondition = (TextView)itemView.findViewById(R.id.sp_water_condition);
-        }
-    }
-
+    //private FloatingActionButton fab;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private DatabaseReference databaseReference;
+    //private DatabaseReference databaseReference;
     private FirebaseRecyclerAdapter<SourceReport, ReportViewHolder> firebaseRecyclerAdapter;
 
     @Override
@@ -62,7 +36,8 @@ public class SourceReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_source_report);
 
         //hide action bar
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation_view);
         View view = bottomNavigationView.findViewById(R.id.ic_report);
@@ -94,7 +69,7 @@ public class SourceReportActivity extends AppCompatActivity {
 
         });
 
-        fab = (FloatingActionButton) findViewById(R.id.add_source_report);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_source_report);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +85,7 @@ public class SourceReportActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(false);
 
         //Database Initialization
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<SourceReport, ReportViewHolder>(
                 SourceReport.class,
                 R.layout.source_report_item,
@@ -149,6 +124,30 @@ public class SourceReportActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(firebaseRecyclerAdapter);
 
+    }
+
+    /**
+     * ReportViewHolder to hold all the report info
+     */
+    private static class ReportViewHolder extends RecyclerView.ViewHolder {
+        private final TextView date;
+        private final TextView reportNum;
+        private final TextView reporter;
+        private final TextView latitude;
+        private final TextView longitude;
+        private final TextView waterType;
+        private final TextView waterCondition;
+
+        public ReportViewHolder(View v) {
+            super(v);
+            date = (TextView) itemView.findViewById(R.id.sp_date);
+            reportNum = (TextView) itemView.findViewById(R.id.sp_report_number);
+            reporter = (TextView) itemView.findViewById(R.id.sp_reporter);
+            latitude = (TextView) itemView.findViewById(R.id.sp_lati);
+            longitude = (TextView) itemView.findViewById(R.id.sp_long);
+            waterType = (TextView) itemView.findViewById(R.id.sp_water_type);
+            waterCondition = (TextView) itemView.findViewById(R.id.sp_water_condition);
+        }
     }
 
 }

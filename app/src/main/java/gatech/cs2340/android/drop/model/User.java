@@ -1,9 +1,5 @@
 package gatech.cs2340.android.drop.model;
 
-/**
- * Created by Jayden Sun on 3/12/17.
- */
-
 public class User {
 
     //public variable required by FireBase
