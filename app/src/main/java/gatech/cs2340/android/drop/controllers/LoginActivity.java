@@ -1,6 +1,5 @@
 package gatech.cs2340.android.drop.controllers;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -80,10 +79,10 @@ public class LoginActivity extends AppCompatActivity {
     private void login(String email, String password) {
         Log.d(TAG, "Login Button Clicked");
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+/*        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Logging In...");
-        progressDialog.show();
+        progressDialog.show();*/
 
         //FireBase auth code
         mAuth.signInWithEmailAndPassword(email, password)
@@ -95,7 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
-                        progressDialog.dismiss();
+
+                        //progressDialog.dismiss();
                         if (task.isSuccessful()) {
                             startActivity(new Intent(LoginActivity.this, SourceReportActivity.class));
                             finish();
