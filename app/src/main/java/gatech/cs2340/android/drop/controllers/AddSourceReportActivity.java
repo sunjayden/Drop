@@ -49,6 +49,11 @@ public class AddSourceReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_source_report);
+        EditText lati = (EditText) findViewById(R.id.rp_lat);
+        lati.setText(getIntent().getStringExtra("latitude"));
+        EditText longi = (EditText) findViewById(R.id.rp_long);
+        longi.setText(getIntent().getStringExtra("longitude"));
+
 
         //Set Spinner
         _waterTypeSpinner = (Spinner) findViewById(R.id.water_type_spinner);
