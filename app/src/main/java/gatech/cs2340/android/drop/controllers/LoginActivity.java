@@ -24,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText _emailField;
     private EditText _passwordField;
     private FirebaseAuth mAuth;
+    //private DatabaseReference mDatabase;
+    private static int loginAttempt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,12 @@ public class LoginActivity extends AppCompatActivity {
                 //Grab email and password input from login screen
                 _emailField = (EditText) findViewById(R.id.login_email_input);
                 _passwordField = (EditText) findViewById(R.id.login_password_input);
-                if (validate()) {
+                if(loginAttempt >= 3) {
+                    Toast.makeText(LoginActivity.this, "Your account has been lockout!",
+                            Toast.LENGTH_LONG).show();
+                } else if (validate()) {
                     String email = _emailField.getText().toString().trim();
                     String password = _passwordField.getText().toString().trim();
-
                     login(email, password);
                 } else {
                     onLoginFailed();
@@ -101,7 +105,10 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         } else {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(LoginActivity.this, R.string.auth_failed,
+                            //Toast.makeText(LoginActivity.this, (3-loginAttempt) + " more attempts left!",
+                              //      Toast.LENGTH_LONG).show();
+                            loginAttempt++;
+                            Toast.makeText(LoginActivity.this, "   Wrong password \n" + (3-loginAttempt) + " more attempts left!",
                                     Toast.LENGTH_LONG).show();
                         }
                     }
