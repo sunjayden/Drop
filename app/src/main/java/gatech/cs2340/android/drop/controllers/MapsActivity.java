@@ -223,7 +223,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                         break;
                                         //tvSnippet.setText(marker.getSnippet());
                                     }
-//                                    Log.e("Get Data", latitude + longitude + "");
+//                                    SLog.e("Get Data", latitude + longitude + "");
 //                                    LatLng cityChoose = new LatLng();
 //                                    mMap.addMarker(new MarkerOptions().position(cityChoose)
 //                                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
@@ -239,7 +239,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         });
                         //LatLng ll = marker.getPosition();
                         //tvLocality.setText(marker.getTitle());
-                        //Log.e("ji", marker.getTitle()+"");
+                        //SLog.e("ji", marker.getTitle()+"");
 //                        tvLat.setText("Water Type: Stream");
 //                        tvLng.setText("Water Condition: Potable");
 //                        tvSnippet.setText(marker.getSnippet());

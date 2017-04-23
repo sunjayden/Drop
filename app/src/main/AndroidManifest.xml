@@ -16,16 +16,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        >
+        tools:ignore="GoogleAppIndexingWarning">
         <service android:name=".MyFirebaseInstanceServices">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"></action>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
@@ -165,6 +164,16 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controllers.PurityReportActivity" />
+        </activity>
+        <activity
+            android:name=".controllers.SecurityLogActivity"
+            android:label="Security Log"
+            android:parentActivityName=".controllers.SettingActivity">
+
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".controllers.SettingActivity" />
         </activity>
     </application>
 

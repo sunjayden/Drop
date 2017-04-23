@@ -29,6 +29,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import gatech.cs2340.android.drop.R;
+import gatech.cs2340.android.drop.model.SLog;
 import gatech.cs2340.android.drop.model.SourceReport;
 import gatech.cs2340.android.drop.model.User;
 
@@ -138,6 +139,9 @@ public class AddSourceReportActivity extends AppCompatActivity {
                         latitude, longitude, waterType, waterCondition);
                 mDatabase = FirebaseDatabase.getInstance().getReference();
                 mDatabase.child("sourceReports").child(reportId).setValue(sp);
+                //add log
+                SLog l = new SLog("New Source Report added by " + userInfo._name + " @ " + timeStamp);
+                mDatabase.child("logs").child(reportId).setValue(l);
             }
 
             @Override
