@@ -3,6 +3,7 @@ package gatech.cs2340.android.drop.controllers;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -47,6 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        final MediaPlayer catSoundMediaPlayer = MediaPlayer.create(this, R.raw.click_sound);
+
+
         //Set Spinner
         _userTypeSpinner = (Spinner) findViewById(R.id.user_type_spinner);
 
@@ -65,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Login Button Clicked");
+                catSoundMediaPlayer.start();
                 Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
             }
@@ -75,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                catSoundMediaPlayer.start();
                 create();
             }
         });
