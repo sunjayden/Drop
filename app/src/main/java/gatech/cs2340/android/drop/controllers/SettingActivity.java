@@ -1,6 +1,7 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -32,6 +33,8 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        final MediaPlayer catSoundMediaPlayer = MediaPlayer.create(this, R.raw.click_sound);
 
         //hide action bar
         if (getSupportActionBar() != null)
@@ -102,6 +105,7 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Edit profile Button Clicked");
+                catSoundMediaPlayer.start();
                 Intent editProfileInIntent = new Intent(SettingActivity.this, EditProfileActivity.class);
                 startActivity(editProfileInIntent);
             }
@@ -113,6 +117,7 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Security SLog Button Clicked");
+                catSoundMediaPlayer.start();
                 Intent logIntent = new Intent(SettingActivity.this, SecurityLogActivity.class);
                 startActivity(logIntent);
 //                Toast.makeText(SettingActivity.this, "Security SLog not yet implemented!",
@@ -125,6 +130,7 @@ public class SettingActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                catSoundMediaPlayer.start();
                 Log.d(TAG, "SLog Out Button Clicked");
                 FirebaseAuth.getInstance().signOut();
                 Intent editProfileInIntent = new Intent(SettingActivity.this, WelcomeActivity.class);

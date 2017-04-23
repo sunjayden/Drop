@@ -3,6 +3,7 @@ package gatech.cs2340.android.drop.controllers;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -52,6 +53,8 @@ public class HistoricalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historical);
+
+        final MediaPlayer catSoundMediaPlayer = MediaPlayer.create(this, R.raw.click_sound);
 
         //hide action bar
         if (getSupportActionBar() != null)
@@ -136,6 +139,7 @@ public class HistoricalActivity extends AppCompatActivity {
         submitSp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                catSoundMediaPlayer.start();
                 showHistory();
             }
         });
