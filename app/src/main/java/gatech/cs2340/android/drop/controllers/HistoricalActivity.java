@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -211,6 +213,34 @@ public class HistoricalActivity extends AppCompatActivity {
                         graph.getViewport().setMaxX(13);
                         graph.getGridLabelRenderer().setVerticalAxisTitle("PPM");
                         graph.getGridLabelRenderer().setHorizontalAxisTitle("Month");
+
+                        GraphView graph2 = (GraphView) findViewById(R.id.graph2);
+                        BarGraphSeries<DataPoint> series1 = new BarGraphSeries<>(new DataPoint[] {
+                                new DataPoint(1, graphData[1].getAvgPPM()),
+                                new DataPoint(2, graphData[2].getAvgPPM()),
+                                new DataPoint(3, graphData[3].getAvgPPM()),
+                                new DataPoint(4, graphData[4].getAvgPPM()),
+                                new DataPoint(5, graphData[5].getAvgPPM()),
+                                new DataPoint(6, graphData[6].getAvgPPM()),
+                                new DataPoint(7, graphData[7].getAvgPPM()),
+                                new DataPoint(8, graphData[8].getAvgPPM()),
+                                new DataPoint(9, graphData[9].getAvgPPM()),
+                                new DataPoint(10, graphData[10].getAvgPPM()),
+                                new DataPoint(11, graphData[11].getAvgPPM()),
+                                new DataPoint(12, graphData[12].getAvgPPM())
+                        });
+                        graph2.addSeries(series1);
+                        graph2.getGridLabelRenderer().setVerticalAxisTitle("PPM");
+                        graph2.getGridLabelRenderer().setHorizontalAxisTitle("Month");
+
+                        // styling
+                        series1.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+                            @Override
+                            public int get(DataPoint data) {
+                                return Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6), 100);
+                            }
+                        });
+
                     } else {
                         Toast.makeText(HistoricalActivity.this, "No Data Found!",
                                 Toast.LENGTH_LONG).show();
