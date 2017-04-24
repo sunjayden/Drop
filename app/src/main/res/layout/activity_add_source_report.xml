@@ -58,6 +58,11 @@
             android:labelFor="@+id/rp_long" />
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/getLocationButton"
+        android:text="get current location"/>
 
     <TextView
         android:layout_width="match_parent"
