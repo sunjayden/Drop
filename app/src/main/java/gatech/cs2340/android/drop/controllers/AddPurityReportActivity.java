@@ -30,6 +30,7 @@ import java.util.Random;
 
 import gatech.cs2340.android.drop.R;
 import gatech.cs2340.android.drop.model.PurityReport;
+import gatech.cs2340.android.drop.model.SLog;
 import gatech.cs2340.android.drop.model.User;
 
 public class AddPurityReportActivity extends AppCompatActivity {
@@ -129,6 +130,10 @@ public class AddPurityReportActivity extends AppCompatActivity {
                         latitude, longitude, overallCondition,virus, contaminant);
                 mDatabase = FirebaseDatabase.getInstance().getReference();
                 mDatabase.child("purityReports").child(reportId).setValue(pr);
+
+                //add log
+                SLog l = new SLog("New Purity Report added by " + userInfo._name + " @ " + timeStamp);
+                mDatabase.child("logs").child(reportId).setValue(l);
             }
 
             @Override

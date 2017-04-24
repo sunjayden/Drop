@@ -1,6 +1,7 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +19,8 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        final MediaPlayer catSoundMediaPlayer = MediaPlayer.create(this, R.raw.click_sound);
+
         //hide action bar
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
@@ -28,6 +31,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Register Button Clicked");
+                catSoundMediaPlayer.start();
                 Intent registerIntent = new Intent(WelcomeActivity.this, RegisterActivity.class);
                 startActivity(registerIntent);
             }
@@ -39,6 +43,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Welcome Sign In Button Clicked");
+                catSoundMediaPlayer.start();
                 Intent loginInIntent = new Intent(WelcomeActivity.this, LoginActivity.class);
                 startActivity(loginInIntent);
             }

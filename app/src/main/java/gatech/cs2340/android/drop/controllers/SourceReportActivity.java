@@ -1,6 +1,7 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -34,6 +35,8 @@ public class SourceReportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_source_report);
+
+        final MediaPlayer catSoundMediaPlayer = MediaPlayer.create(this, R.raw.click_sound);
 
         //hide action bar
         if (getSupportActionBar() != null)
@@ -74,6 +77,7 @@ public class SourceReportActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Add source report Button Clicked");
+                catSoundMediaPlayer.start();
                 Intent editProfileInIntent = new Intent(SourceReportActivity.this, AddSourceReportActivity.class);
                 startActivity(editProfileInIntent);
             }

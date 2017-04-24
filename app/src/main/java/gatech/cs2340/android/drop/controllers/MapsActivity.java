@@ -93,8 +93,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Map Button Clicked");
-                //Intent registerIntent = new Intent(MapsActivity.this, RegisterActivity.class);
-                //startActivity(registerIntent);
                 geoLocate();
             }
         });
@@ -163,26 +161,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //sw.append("In ").append(name);
 
                 //Marker marker = mMap.addMarker(new MarkerOptions().position(cityChoose)
-                        //.title(name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                        //.snippet("Potential Water Source here"));
+                //.title(name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                //.snippet("Potential Water Source here"));
                 //mMap.moveCamera(CameraUpdateFactory.newLatLng(cityChoose));
+                Intent sourceRepoIntent = new Intent(MapsActivity.this, AddSourceReportActivity.class);
+                String lati = String.valueOf(latLng.latitude);
+                String longi = String.valueOf(latLng.longitude);
+                sourceRepoIntent.putExtra("latitude", lati);
+                sourceRepoIntent.putExtra("longitude", longi);
+                startActivity(sourceRepoIntent);
 
             }
         });
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                //StringBuilder sw = new StringBuilder();
+                StringBuilder sw = new StringBuilder();
 //                sw.append(marker.getTitle());
 //                sw.append(System.getProperty("line.separator"));
-                //sw.append("Latitude: ").append(marker.getPosition().latitude);
+//                sw.append("Latitude: ").append(marker.getPosition().latitude);
                 final double lat = marker.getPosition().latitude;
-                //sw.append(System.getProperty("line.separator"));
-                //sw.append("Longitude: ").append(marker.getPosition().longitude);
+//                sw.append(System.getProperty("line.separator"));
+//                sw.append("Longitude: ").append(marker.getPosition().longitude);
                 final double lng = marker.getPosition().longitude;
-                //sw.append(System.getProperty("line.separator"));
-                // String msg = sw.toString();
-                //Toast.makeText(MapsActivity.this, msg, Toast.LENGTH_LONG).show();
+//                sw.append(System.getProperty("line.separator"));
+//                 String msg = sw.toString();
+//                Toast.makeText(MapsActivity.this, msg, Toast.LENGTH_LONG).show();
+
+
                 mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
                     @Override
                     public View getInfoWindow(Marker marker) {

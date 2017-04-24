@@ -1,6 +1,7 @@
 package gatech.cs2340.android.drop.controllers;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        final MediaPlayer catSoundMediaPlayer = MediaPlayer.create(this, R.raw.click_sound);
+
         //Login button onClick
         Button login = (Button) findViewById(R.id.login_button);
         login.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Grab email and password input from login screen
                 _emailField = (EditText) findViewById(R.id.login_email_input);
                 _passwordField = (EditText) findViewById(R.id.login_password_input);
+                catSoundMediaPlayer.start();
                 if(loginAttempt >= 3) {
                     Toast.makeText(LoginActivity.this, "Your account has been lockout!",
                             Toast.LENGTH_LONG).show();
@@ -61,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         retrievePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                catSoundMediaPlayer.start();
                 Intent passwordIntent = new Intent(LoginActivity.this, RetrievePasswordActivity.class);
                 startActivity(passwordIntent);
             }
@@ -71,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                catSoundMediaPlayer.start();
                 Intent signUpIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(signUpIntent);
             }
