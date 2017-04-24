@@ -161,8 +161,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 //sw.append("In ").append(name);
 
                 //Marker marker = mMap.addMarker(new MarkerOptions().position(cityChoose)
-                        //.title(name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                        //.snippet("Potential Water Source here"));
+                //.title(name).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                //.snippet("Potential Water Source here"));
                 //mMap.moveCamera(CameraUpdateFactory.newLatLng(cityChoose));
                 Intent sourceRepoIntent = new Intent(MapsActivity.this, AddSourceReportActivity.class);
                 String lati = String.valueOf(latLng.latitude);
@@ -229,7 +229,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                         break;
                                         //tvSnippet.setText(marker.getSnippet());
                                     }
-//                                    SLog.e("Get Data", latitude + longitude + "");
+//                                    Log.e("Get Data", latitude + longitude + "");
 //                                    LatLng cityChoose = new LatLng();
 //                                    mMap.addMarker(new MarkerOptions().position(cityChoose)
 //                                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
@@ -245,7 +245,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         });
                         //LatLng ll = marker.getPosition();
                         //tvLocality.setText(marker.getTitle());
-                        //SLog.e("ji", marker.getTitle()+"");
+                        //Log.e("ji", marker.getTitle()+"");
 //                        tvLat.setText("Water Type: Stream");
 //                        tvLng.setText("Water Condition: Potable");
 //                        tvSnippet.setText(marker.getSnippet());
